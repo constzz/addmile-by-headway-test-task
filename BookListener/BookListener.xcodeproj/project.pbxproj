@@ -13,49 +13,16 @@
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7F8780932C5D7CB100B12A36 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7F87807A2C5D7CAF00B12A36 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7F8780812C5D7CAF00B12A36;
-			remoteInfo = BookListener;
-		};
-		7F87809D2C5D7CB100B12A36 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7F87807A2C5D7CAF00B12A36 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7F8780812C5D7CAF00B12A36;
-			remoteInfo = BookListener;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780872C5D7CAF00B12A36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7F8780922C5D7CB100B12A36 /* BookListenerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookListenerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F87809C2C5D7CB100B12A36 /* BookListenerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookListenerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7F87807F2C5D7CAF00B12A36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F87808F2C5D7CB100B12A36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F8780992C5D7CB100B12A36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,8 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				7F8780822C5D7CAF00B12A36 /* BookListener.app */,
-				7F8780922C5D7CB100B12A36 /* BookListenerTests.xctest */,
-				7F87809C2C5D7CB100B12A36 /* BookListenerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,42 +87,6 @@
 			productReference = 7F8780822C5D7CAF00B12A36 /* BookListener.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7F8780912C5D7CB100B12A36 /* BookListenerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F8780A92C5D7CB100B12A36 /* Build configuration list for PBXNativeTarget "BookListenerTests" */;
-			buildPhases = (
-				7F87808E2C5D7CB100B12A36 /* Sources */,
-				7F87808F2C5D7CB100B12A36 /* Frameworks */,
-				7F8780902C5D7CB100B12A36 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7F8780942C5D7CB100B12A36 /* PBXTargetDependency */,
-			);
-			name = BookListenerTests;
-			productName = BookListenerTests;
-			productReference = 7F8780922C5D7CB100B12A36 /* BookListenerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7F87809B2C5D7CB100B12A36 /* BookListenerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F8780AC2C5D7CB100B12A36 /* Build configuration list for PBXNativeTarget "BookListenerUITests" */;
-			buildPhases = (
-				7F8780982C5D7CB100B12A36 /* Sources */,
-				7F8780992C5D7CB100B12A36 /* Frameworks */,
-				7F87809A2C5D7CB100B12A36 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7F87809E2C5D7CB100B12A36 /* PBXTargetDependency */,
-			);
-			name = BookListenerUITests;
-			productName = BookListenerUITests;
-			productReference = 7F87809C2C5D7CB100B12A36 /* BookListenerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,14 +99,6 @@
 				TargetAttributes = {
 					7F8780812C5D7CAF00B12A36 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					7F8780912C5D7CB100B12A36 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 7F8780812C5D7CAF00B12A36;
-					};
-					7F87809B2C5D7CB100B12A36 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 7F8780812C5D7CAF00B12A36;
 					};
 				};
 			};
@@ -195,8 +116,6 @@
 			projectRoot = "";
 			targets = (
 				7F8780812C5D7CAF00B12A36 /* BookListener */,
-				7F8780912C5D7CB100B12A36 /* BookListenerTests */,
-				7F87809B2C5D7CB100B12A36 /* BookListenerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,20 +127,6 @@
 			files = (
 				7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */,
 				7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F8780902C5D7CB100B12A36 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F87809A2C5D7CB100B12A36 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,34 +142,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F87808E2C5D7CB100B12A36 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F8780982C5D7CB100B12A36 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7F8780942C5D7CB100B12A36 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7F8780812C5D7CAF00B12A36 /* BookListener */;
-			targetProxy = 7F8780932C5D7CB100B12A36 /* PBXContainerItemProxy */;
-		};
-		7F87809E2C5D7CB100B12A36 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7F8780812C5D7CAF00B12A36 /* BookListener */;
-			targetProxy = 7F87809D2C5D7CB100B12A36 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7F8780A42C5D7CB100B12A36 /* Debug */ = {
@@ -397,11 +275,14 @@
 				DEVELOPMENT_TEAM = S7242VTUBZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Book Listener";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,9 +290,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListener;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -426,11 +311,14 @@
 				DEVELOPMENT_TEAM = S7242VTUBZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Book Listener";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,85 +326,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListener;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		7F8780AA2C5D7CB100B12A36 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S7242VTUBZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookListener.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookListener";
-			};
-			name = Debug;
-		};
-		7F8780AB2C5D7CB100B12A36 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S7242VTUBZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookListener.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookListener";
-			};
-			name = Release;
-		};
-		7F8780AD2C5D7CB100B12A36 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S7242VTUBZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BookListener;
-			};
-			name = Debug;
-		};
-		7F8780AE2C5D7CB100B12A36 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S7242VTUBZ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BookListener;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -537,24 +353,6 @@
 			buildConfigurations = (
 				7F8780A72C5D7CB100B12A36 /* Debug */,
 				7F8780A82C5D7CB100B12A36 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7F8780A92C5D7CB100B12A36 /* Build configuration list for PBXNativeTarget "BookListenerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7F8780AA2C5D7CB100B12A36 /* Debug */,
-				7F8780AB2C5D7CB100B12A36 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7F8780AC2C5D7CB100B12A36 /* Build configuration list for PBXNativeTarget "BookListenerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7F8780AD2C5D7CB100B12A36 /* Debug */,
-				7F8780AE2C5D7CB100B12A36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
