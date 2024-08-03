@@ -26,6 +26,8 @@
 		7F8781202C5E673500B12A36 /* RoundingPrecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87811F2C5E673500B12A36 /* RoundingPrecision.swift */; };
 		7F8781272C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781252C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png */; };
 		7F8781282C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781262C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png */; };
+		7F87812B2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781292C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_light.png */; };
+		7F87812C2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87812A2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		7F87811F2C5E673500B12A36 /* RoundingPrecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingPrecision.swift; sourceTree = "<group>"; };
 		7F8781252C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F8781262C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_light.png; sourceTree = "<group>"; };
+		7F8781292C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_light.png; sourceTree = "<group>"; };
+		7F87812A2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_dark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		7F8780F02C5E3E2300B12A36 /* BookListenerSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F87812A2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */,
+				7F8781292C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_light.png */,
 				7F8781252C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png */,
 				7F8781262C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png */,
 				7F8780EC2C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_dark.png */,
@@ -286,6 +292,8 @@
 				7F8780F52C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_light.png in Resources */,
 				7F8781282C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */,
 				7F8780F32C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png in Resources */,
+				7F87812C2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */,
+				7F87812B2C5E953800B12A36 /* test_sliderView_empty.400_200_pixels_light.png in Resources */,
 				7F8780F42C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png in Resources */,
 				7F8781272C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */,
 				7F8780F22C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_dark.png in Resources */,
