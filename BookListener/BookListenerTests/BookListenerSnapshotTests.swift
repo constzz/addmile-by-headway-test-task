@@ -14,4 +14,9 @@ class BookListenerSnapshotTests: XCTestCase {
         assertImageSnapshot(ofView: view, name: "iphone13PRO", config: .iPhone13Pro)
         assertImageSnapshot(ofView: view, name: "iphoneSE", config: .iPhoneSe)
     }
+    
+    func test_playbackControlView() {
+        let view = PlaybackControlView()
+        assertImageSnapshot(ofView: view, name: "300_200_pixels", config: .init(size: .init(width: 300, height: 200)))
+    }
 }

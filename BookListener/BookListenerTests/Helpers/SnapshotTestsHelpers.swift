@@ -18,7 +18,7 @@ extension XCTestCase {
     
     func assertImageSnapshot<Value: View>(
         ofView view: Value,
-        name: String,
+        name: String?,
         config: ViewImageConfig,
         fileID: StaticString = #fileID,
         file filePath: StaticString = #filePath,
@@ -31,7 +31,7 @@ extension XCTestCase {
             assertSnapshot(
                 of: view,
                 as: .image(layout: .device(config: config.withUserInterfaceStyle(style))),
-                named: name.appending("_\(style.title)"),
+                named: name?.appending("_\(style.title)"),
                 fileID: fileID,
                 file: filePath,
                 testName: testName,

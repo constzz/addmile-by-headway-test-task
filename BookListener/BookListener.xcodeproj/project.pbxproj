@@ -19,6 +19,9 @@
 		7F8780F32C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780ED2C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png */; };
 		7F8780F42C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780EE2C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png */; };
 		7F8780F52C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780EF2C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_light.png */; };
+		7F8780F82C5E406200B12A36 /* PlaybackControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780F72C5E406200B12A36 /* PlaybackControlView.swift */; };
+		7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781132C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift */; };
+		7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781152C5E54BD00B12A36 /* PlaybackControlViewRole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		7F8780ED2C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_emptyScreen.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F8780EE2C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_emptyScreen.iphoneSE_dark.png; sourceTree = "<group>"; };
 		7F8780EF2C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_emptyScreen.iphoneSE_light.png; sourceTree = "<group>"; };
+		7F8780F72C5E406200B12A36 /* PlaybackControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlView.swift; sourceTree = "<group>"; };
+		7F8781132C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlViewButtonStyle.swift; sourceTree = "<group>"; };
+		7F8781152C5E54BD00B12A36 /* PlaybackControlViewRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlViewRole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		7F8780842C5D7CAF00B12A36 /* BookListener */ = {
 			isa = PBXGroup;
 			children = (
+				7F8780F62C5E404700B12A36 /* UIComponents */,
 				7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */,
 				7F8780872C5D7CAF00B12A36 /* ContentView.swift */,
 				7F8780892C5D7CB000B12A36 /* Assets.xcassets */,
@@ -138,6 +145,24 @@
 				7F8780F02C5E3E2300B12A36 /* BookListenerSnapshotTests */,
 			);
 			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		7F8780F62C5E404700B12A36 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				7F8781122C5E549000B12A36 /* PlaybackControlView */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		7F8781122C5E549000B12A36 /* PlaybackControlView */ = {
+			isa = PBXGroup;
+			children = (
+				7F8780F72C5E406200B12A36 /* PlaybackControlView.swift */,
+				7F8781132C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift */,
+				7F8781152C5E54BD00B12A36 /* PlaybackControlViewRole.swift */,
+			);
+			path = PlaybackControlView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +279,9 @@
 			files = (
 				7F8780882C5D7CAF00B12A36 /* ContentView.swift in Sources */,
 				7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */,
+				7F8780F82C5E406200B12A36 /* PlaybackControlView.swift in Sources */,
+				7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */,
+				7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
