@@ -22,6 +22,8 @@
 		7F8780F82C5E406200B12A36 /* PlaybackControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780F72C5E406200B12A36 /* PlaybackControlView.swift */; };
 		7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781132C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift */; };
 		7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781152C5E54BD00B12A36 /* PlaybackControlViewRole.swift */; };
+		7F8781192C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781172C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_dark.png */; };
+		7F87811A2C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781182C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_light.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		7F8780F72C5E406200B12A36 /* PlaybackControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlView.swift; sourceTree = "<group>"; };
 		7F8781132C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlViewButtonStyle.swift; sourceTree = "<group>"; };
 		7F8781152C5E54BD00B12A36 /* PlaybackControlViewRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlViewRole.swift; sourceTree = "<group>"; };
+		7F8781172C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_dark.png; sourceTree = "<group>"; };
+		7F8781182C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_light.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 		7F8780F02C5E3E2300B12A36 /* BookListenerSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F8781172C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_dark.png */,
+				7F8781182C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_light.png */,
 				7F8780EC2C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_dark.png */,
 				7F8780ED2C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png */,
 				7F8780EE2C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png */,
@@ -264,8 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F8780F52C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_light.png in Resources */,
+				7F87811A2C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */,
 				7F8780F32C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_light.png in Resources */,
 				7F8780F42C5E3E2300B12A36 /* test_emptyScreen.iphoneSE_dark.png in Resources */,
+				7F8781192C5E55C000B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */,
 				7F8780F22C5E3E2300B12A36 /* test_emptyScreen.iphone13PRO_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
