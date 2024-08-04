@@ -42,7 +42,6 @@
 		7F8781672C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781632C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png */; };
 		7F8781682C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */; };
 		7F87816A2C5F69BA00B12A36 /* ListenScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */; };
-		7F87816C2C5F69E800B12A36 /* ListenScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */; };
 		7F8781742C5F859E00B12A36 /* 00 Introduction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */; };
 		7F8781752C5F859E00B12A36 /* 01 Chapter 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */; };
 		7F8781762C5F859E00B12A36 /* 02 Chapter 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */; };
@@ -101,7 +100,6 @@
 		7F8781632C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
 		7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModelTests.swift; sourceTree = "<group>"; };
-		7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModel.swift; sourceTree = "<group>"; };
 		7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "00 Introduction.mp3"; sourceTree = "<group>"; };
 		7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Chapter 1.mp3"; sourceTree = "<group>"; };
 		7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Chapter 2.mp3"; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				7F8781372C5EAFF000B12A36 /* Models */,
 				7F8781302C5E983000B12A36 /* UIComponents */,
 				7F87812E2C5E95F400B12A36 /* ListenScreenView.swift */,
-				7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */,
 			);
 			path = ListenScreen;
 			sourceTree = "<group>";
@@ -461,7 +458,6 @@
 				7F87812F2C5E95F400B12A36 /* ListenScreenView.swift in Sources */,
 				7F8781342C5E987C00B12A36 /* ChapterInfoView.swift in Sources */,
 				7F8781362C5EAFC900B12A36 /* ToggleView.swift in Sources */,
-				7F87816C2C5F69E800B12A36 /* ListenScreenViewModel.swift in Sources */,
 				7F8781852C5F973E00B12A36 /* Chapter.swift in Sources */,
 				7F8781322C5E983F00B12A36 /* CoverImageView.swift in Sources */,
 				7F8781812C5F971800B12A36 /* AudioViewModel.swift in Sources */,
