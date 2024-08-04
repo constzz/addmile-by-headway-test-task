@@ -16,6 +16,8 @@ struct ListenScreenView: View {
     private let sliderChangeSubject: PassthroughSubject<Double, Never> = .init()
     @State private var wasPlayingBeforeSliderChange: Bool = false
     @State private var isEditingCurrentTime: Bool = false
+    private let subtitleSubject = PassthroughSubject<String, Never>()
+    private let mainTitleSubject = PassthroughSubject<String, Never>()
                 
     init(mode: ListenScreenMode, isAnimating: Bool, viewModel: ListenScreenViewModelProtocol) {
         self.mode = mode
@@ -28,7 +30,9 @@ struct ListenScreenView: View {
             switch mode {
             case .listen:
                 CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
-                ChapterInfoView()
+                ChapterInfoView(
+                    subtitlePublisher: subtitleSubject.eraseToAnyPublisher(),
+                    mainTitlePublisher: mainTitleSubject.eraseToAnyPublisher())
                 SliderView(
                     valuePublisher: viewModel.progressPublisher
                         .combineLatest(sliderChangeSubject.eraseToAnyPublisher())
@@ -85,6 +89,11 @@ struct ListenScreenView: View {
                 viewModel.togglePlayPause()
                 wasPlayingBeforeSliderChange = true
             }
+        }
+        .onReceive(viewModel.currentChapterPublisher) { chapter in
+            guard let chapter else { return print("Failed to load ")}
+            self.subtitleSubject.send("\(chapter.index) of \(viewModel.chaptersCount)")
+            self.mainTitleSubject.send(chapter.title)
         }
     }
 }

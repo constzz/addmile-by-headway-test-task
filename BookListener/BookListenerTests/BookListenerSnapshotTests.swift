@@ -40,7 +40,9 @@ class BookListenerSnapshotTests: XCTestCase {
     }
     
     func test_chapterInfoView() {
-        let view = ChapterInfoView()
+        let view = ChapterInfoView(
+            subtitlePublisher: CurrentValueSubject("1 of 4").eraseToAnyPublisher(),
+            mainTitlePublisher: CurrentValueSubject("title").eraseToAnyPublisher())
         self.assertImageSnapshot(ofView: view, name: .snapshotName300_per_200, config: .config_300_200_pixels)
     }
     

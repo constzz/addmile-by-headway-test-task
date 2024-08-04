@@ -100,6 +100,7 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
 
     }
     
+    
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
@@ -107,9 +108,10 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         view: some View,
         audioViewModel: AudioViewModelProtocol
     ) {
-        let audioViewModel = AudioViewModel(book: .init())
+        let audioViewModel = AudioViewModel()
+        try! audioViewModel.set(url: Mock.thinkAndGrowRich0File!)
         let listenScreenViewModel = ListenScreenViewModel(
-            chapters: createRandomChapters(),
+            book: Mock.mockedThinkAndGrowRichBook,
             defaultChapterIndex: 0,
             audioViewModel: audioViewModel)
         let view = ListenScreenView(

@@ -66,7 +66,9 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
     
     private func makeSUT(
     ) -> AudioViewModel {
-        return AudioViewModel(book: .init())
+        let sut = AudioViewModel()
+        try! sut.set(url: Mock.thinkAndGrowRich0File!)
+        return sut
     }
 
 }

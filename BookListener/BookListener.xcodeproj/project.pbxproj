@@ -13,6 +13,9 @@
 		7F48B3E42C6000ED006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3E22C6000ED006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */; };
 		7F48B3E72C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3E52C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */; };
 		7F48B3E82C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3E62C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */; };
+		7F48B3EA2C601FB6006CCB29 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3E92C601FB6006CCB29 /* Book.swift */; };
+		7F48B3EC2C602898006CCB29 /* MockedFileURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */; };
+		7F48B3EE2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -75,6 +78,9 @@
 		7F48B3E22C6000ED006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
 		7F48B3E52C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_light.png; sourceTree = "<group>"; };
 		7F48B3E62C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_dark.png; sourceTree = "<group>"; };
+		7F48B3E92C601FB6006CCB29 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFileURLs.swift; sourceTree = "<group>"; };
+		7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = think_and_grow_rich_book_cover.jpg; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,7 +171,7 @@
 		7F8780842C5D7CAF00B12A36 /* BookListener */ = {
 			isa = PBXGroup;
 			children = (
-				7F8781832C5F973600B12A36 /* Chapter */,
+				7F8781832C5F973600B12A36 /* Book */,
 				7F87817D2C5F96F400B12A36 /* AudioViewModel */,
 				7F8781732C5F859E00B12A36 /* Mock */,
 				7F87812D2C5E95E100B12A36 /* ListenScreen */,
@@ -310,12 +316,14 @@
 		7F8781732C5F859E00B12A36 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */,
 				7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */,
 				7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */,
 				7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */,
 				7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */,
 				7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */,
 				7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */,
+				7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -329,12 +337,13 @@
 			path = AudioViewModel;
 			sourceTree = "<group>";
 		};
-		7F8781832C5F973600B12A36 /* Chapter */ = {
+		7F8781832C5F973600B12A36 /* Book */ = {
 			isa = PBXGroup;
 			children = (
 				7F8781842C5F973E00B12A36 /* Chapter.swift */,
+				7F48B3E92C601FB6006CCB29 /* Book.swift */,
 			);
-			path = Chapter;
+			path = Book;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +439,7 @@
 			files = (
 				7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */,
 				7F8781772C5F859E00B12A36 /* 03 Chapter 3.mp3 in Resources */,
+				7F48B3EE2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg in Resources */,
 				7F8781782C5F859E00B12A36 /* 04 Chapter 4.mp3 in Resources */,
 				7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */,
 				7F8781762C5F859E00B12A36 /* 02 Chapter 2.mp3 in Resources */,
@@ -483,7 +493,9 @@
 				7F87811C2C5E5C2700B12A36 /* SliderView.swift in Sources */,
 				7F8781872C5F975200B12A36 /* Array+Extensions.swift in Sources */,
 				7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */,
+				7F48B3EA2C601FB6006CCB29 /* Book.swift in Sources */,
 				7F8781392C5EAFF600B12A36 /* ListenScreenMode.swift in Sources */,
+				7F48B3EC2C602898006CCB29 /* MockedFileURLs.swift in Sources */,
 				7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */,
 				7F8781202C5E673500B12A36 /* RoundingPrecision.swift in Sources */,
 			);

@@ -11,8 +11,7 @@ import Combine
 
 final class AudioViewModel: AudioViewModelProtocol {
     
-    let player: AVAudioPlayer
-    let book: Book
+    var player: AVAudioPlayer = .init()
     
     var currentTimeInSeconds: AnyPublisher<Double, Never> {
         currentTimeInSecondsSubject.eraseToAnyPublisher()
@@ -35,10 +34,7 @@ final class AudioViewModel: AudioViewModelProtocol {
     
     private var timer: Timer?
     
-    init(book: Book) {
-        self.book = book
-        self.player = (try? .init(contentsOf: book.url)) ?? .init()
-        // TODO: implement delegate
+    init() {
         player.delegate = AudioDelegate(didFinishPlaying: { bool in
             print("did finish playing")
         }, decodeErrorDidOccur: { error in
@@ -46,6 +42,10 @@ final class AudioViewModel: AudioViewModelProtocol {
         })
         currentTimeInSecondsSubject.send(player.currentTime)
         setupTimer()
+    }
+    
+    func set(url: URL) throws {
+        self.player = try .init(contentsOf: url)
     }
     
     func play() {

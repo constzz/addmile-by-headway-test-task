@@ -6,17 +6,31 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ChapterInfoView: View {
     
+    @State private var subtitle: String = ""
+    @State private var mainTitle: String = ""
+    private let subtitlePublisher: AnyPublisher<String, Never>
+    private let mainTitlePublisher: AnyPublisher<String, Never>
+    
+    init(
+        subtitlePublisher: AnyPublisher<String, Never>,
+        mainTitlePublisher: AnyPublisher<String, Never>
+    ) {
+        self.subtitlePublisher = subtitlePublisher
+        self.mainTitlePublisher = mainTitlePublisher
+    }
+    
     var body: some View {
         VStack {
-            Text("1 of 4")
+            Text(subtitle)
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(.gray)
                 .textCase(.uppercase)
 
-            Text("title")
+            Text(mainTitle)
                 .multilineTextAlignment(.center)
                 .font(.system(size: 16, weight: .regular))
                 .lineLimit(0)
@@ -24,5 +38,11 @@ struct ChapterInfoView: View {
                 .lineSpacing(2)
         }
         .padding(.horizontal, 40)
+        .onReceive(subtitlePublisher) { title in
+            self.subtitle = title
+        }
+        .onReceive(mainTitlePublisher) { title in
+            self.mainTitle = title
+        }
     }
 }

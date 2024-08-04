@@ -26,6 +26,14 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var currentChapterPublisher: AnyPublisher<BookListener.Chapter?, Never> {
+        CurrentValueSubject(.init(index: 1, title: "title", url: nil)).eraseToAnyPublisher()
+    }
+    
+    var chaptersCount: Int {
+        4
+    }
+    
     var isPlayingNonUpdatingValue: Bool = false
     
     func convertProgresToCurrentTime(progress: Double) -> String {
@@ -53,7 +61,7 @@ final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
     
     var isPlaying: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
     
-    var currentChapter: BookListener.Chapter?
+    var currentChapter: BookListener.Chapter? = .init(index: 0, title: "1 of 4", url: nil)
     
     func reverse() {
     }

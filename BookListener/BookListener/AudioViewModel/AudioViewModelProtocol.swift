@@ -8,10 +8,6 @@
 import Combine
 import Foundation
 
-struct Book {
-    let url: URL = Bundle.main.url(forResource: "00 Introduction", withExtension: "mp3")!
-}
-
 protocol AudioViewModelProtocol {
     var currentTimeInSeconds: AnyPublisher<Double, Never> { get }
     var totalDurationInSeconds: Double { get }
@@ -22,4 +18,5 @@ protocol AudioViewModelProtocol {
     func seekTo(_ value: Double)
     func forward(seconds: Double)
     func reverse(seconds: Double)
+    func set(url: URL) throws
 }

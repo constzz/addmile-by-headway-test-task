@@ -12,6 +12,9 @@ protocol ListenScreenViewModelProtocol {
     var isPlayingNonUpdatingValue: Bool { get }
     
     var currentChapter: Chapter? { get }
+    var currentChapterPublisher: AnyPublisher<Chapter?, Never> { get }
+    var chaptersCount: Int { get }
+    
     var currentDurationInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
     var currentTimePublisher: AnyPublisher<String, Never> { get }

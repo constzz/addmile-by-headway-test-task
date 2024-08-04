@@ -37,14 +37,20 @@ final class ListenScreenViewModelTests: XCTestCase {
     }
     
     func test_reverse_reversesDuration5SecondsBack() {
-        let sut = makeSUT(currentDurationInSeconds: 20.0)
+        let sut = makeSUT()
+        sut.seekTo(20.0)
+        
         sut.reverse()
+        
         sut.currentDurationInSeconds.waitForPublisher(expectedValue: 15.0, cancellables: &cancellables)
     }
     
     func test_forward_forwardsDuration5SecondsBack() {
-        let sut = makeSUT(currentDurationInSeconds: 11.0)
+        let sut = makeSUT()
+        sut.seekTo(11.0)
+        
         sut.forward()
+        
         sut.currentDurationInSeconds.waitForPublisher(expectedValue: 21.0, cancellables: &cancellables)
     }
     
@@ -143,15 +149,15 @@ final class ListenScreenViewModelTests: XCTestCase {
 
     
     private func makeSUT(
-        currentDurationInSeconds: Double? = nil,
         chapters: [Chapter]? = nil,
         defaultChapterIndex: Int? = nil
     ) -> ListenScreenViewModelProtocol {
+        let audioViewModel = AudioViewModel()
+        try! audioViewModel.set(url: createRandomChapters().first!.url!)
         return ListenScreenViewModel(
-            currentDurationInSeconds: currentDurationInSeconds,
-            chapters: chapters ?? createRandomChapters(),
-            defaultChapterIndex: defaultChapterIndex, 
-            audioViewModel: AudioViewModel(book: .init())
+            book: chapters == nil ? Mock.mockedThinkAndGrowRichBook : Book(chapters: chapters ?? [], coverURL: nil),
+            defaultChapterIndex: defaultChapterIndex,
+            audioViewModel: audioViewModel
         )
     }
     
@@ -178,7 +184,5 @@ extension ListenScreenViewModelProtocol {
 }
 
 func createRandomChapters() -> [Chapter] {
-    ["Lorem 1", "Ipsum here 2", "No bumu 3", "Smth 4"].enumerated().map { index, title in
-        return .init(index: index, title: title)
-    }
+    Mock.mockedThinkAndGrowRichBook.chapters
 }

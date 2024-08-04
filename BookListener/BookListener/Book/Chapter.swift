@@ -10,4 +10,5 @@ import Foundation
 struct Chapter: Hashable {
     let index: Int
     let title: String
+    let url: URL?
 }

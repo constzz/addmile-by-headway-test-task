@@ -25,8 +25,21 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     var isPlayingNonUpdatingValue: Bool { isPlayingSubject.value }
     
-    private(set) var currentChapter: Chapter?
-    private let chapters: [Chapter]
+    var currentChapterPublisher: AnyPublisher<Chapter?, Never> {
+        currentChapterSubject.eraseToAnyPublisher()
+    }
+    
+    private lazy var currentChapterSubject = CurrentValueSubject<Chapter?, Never>(currentChapter)
+    
+    private(set) var currentChapter: Chapter? {
+        didSet { onCurrentChapterUpdate(chapter: currentChapter) }
+    }
+        
+    var chaptersCount: Int {
+        book.chapters.count
+    }
+    
+    private let book: Book
     private let audioViewModel: AudioViewModelProtocol
     
     var progressPublisher: AnyPublisher<Double, Never> {
@@ -64,19 +77,18 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     init(
-        currentDurationInSeconds: Double? = nil,
-        chapters: [Chapter],
+        book: Book,
         defaultChapterIndex: Int?,
         audioViewModel: AudioViewModelProtocol
     ) {
-        self.chapters = chapters
-        if let defaultChapterIndex, let firstChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
+        self.book = book
+        if let defaultChapterIndex, let firstChapter = book.chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
             self.currentChapter = firstChapter
         } else {
-            self.currentChapter = chapters.first
+            self.currentChapter = book.chapters.first
         }
         self.audioViewModel = audioViewModel
-        self.audioViewModel.seekTo(currentDurationInSeconds ?? 0.0)
+        onCurrentChapterUpdate(chapter: self.currentChapter)
     }
     
     func togglePlayPause() {
@@ -94,14 +106,14 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     func previous() {
         guard let currentChapter else { return }
-        if let previousChapter = chapters.safelyRetrieve(elementAt: currentChapter.index - 1) {
+        if let previousChapter = book.chapters.safelyRetrieve(elementAt: currentChapter.index - 1) {
             self.currentChapter = previousChapter
         }
     }
     
     func next() {
         guard let currentChapter else { return }
-        if let nextChapter = chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
+        if let nextChapter = book.chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
             self.currentChapter = nextChapter
         }
     }
@@ -112,5 +124,14 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     func convertProgresToCurrentTime(progress: Double) -> String {
         dateComponentsFormatter.string(from: progress * totalDuration) ?? ""
+    }
+    
+    private func onCurrentChapterUpdate(chapter: Chapter?) {
+        currentChapterSubject.send(currentChapter)
+        if let url = currentChapter?.url {
+            try? audioViewModel.set(url: url)
+        } else {
+            audioViewModel.pause()
+        }
     }
 }
