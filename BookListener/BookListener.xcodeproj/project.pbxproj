@@ -49,6 +49,10 @@
 		7F8781772C5F859E00B12A36 /* 03 Chapter 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */; };
 		7F8781782C5F859E00B12A36 /* 04 Chapter 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */; };
 		7F8781792C5F859E00B12A36 /* 05 Chapter 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */; };
+		7F87817F2C5F970000B12A36 /* AudioViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87817E2C5F970000B12A36 /* AudioViewModelProtocol.swift */; };
+		7F8781812C5F971800B12A36 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781802C5F971800B12A36 /* AudioViewModel.swift */; };
+		7F8781852C5F973E00B12A36 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781842C5F973E00B12A36 /* Chapter.swift */; };
+		7F8781872C5F975200B12A36 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781862C5F975200B12A36 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,10 @@
 		7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "05 Chapter 5.mp3"; sourceTree = "<group>"; };
 		7F87817B2C5F86B300B12A36 /* BookListenerUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookListenerUnitTests.xctestplan; sourceTree = "<group>"; };
 		7F87817C2C5F876D00B12A36 /* BookListenerSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookListenerSnapshotTests.xctestplan; sourceTree = SOURCE_ROOT; };
+		7F87817E2C5F970000B12A36 /* AudioViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModelProtocol.swift; sourceTree = "<group>"; };
+		7F8781802C5F971800B12A36 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		7F8781842C5F973E00B12A36 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		7F8781862C5F975200B12A36 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +157,8 @@
 		7F8780842C5D7CAF00B12A36 /* BookListener */ = {
 			isa = PBXGroup;
 			children = (
+				7F8781832C5F973600B12A36 /* Chapter */,
+				7F87817D2C5F96F400B12A36 /* AudioViewModel */,
 				7F8781732C5F859E00B12A36 /* Mock */,
 				7F87812D2C5E95E100B12A36 /* ListenScreen */,
 				7F87811E2C5E672D00B12A36 /* Utility */,
@@ -241,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				7F87811F2C5E673500B12A36 /* RoundingPrecision.swift */,
+				7F8781862C5F975200B12A36 /* Array+Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -296,6 +307,23 @@
 				7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		7F87817D2C5F96F400B12A36 /* AudioViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7F87817E2C5F970000B12A36 /* AudioViewModelProtocol.swift */,
+				7F8781802C5F971800B12A36 /* AudioViewModel.swift */,
+			);
+			path = AudioViewModel;
+			sourceTree = "<group>";
+		};
+		7F8781832C5F973600B12A36 /* Chapter */ = {
+			isa = PBXGroup;
+			children = (
+				7F8781842C5F973E00B12A36 /* Chapter.swift */,
+			);
+			path = Chapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,8 +462,12 @@
 				7F8781342C5E987C00B12A36 /* ChapterInfoView.swift in Sources */,
 				7F8781362C5EAFC900B12A36 /* ToggleView.swift in Sources */,
 				7F87816C2C5F69E800B12A36 /* ListenScreenViewModel.swift in Sources */,
+				7F8781852C5F973E00B12A36 /* Chapter.swift in Sources */,
 				7F8781322C5E983F00B12A36 /* CoverImageView.swift in Sources */,
+				7F8781812C5F971800B12A36 /* AudioViewModel.swift in Sources */,
+				7F87817F2C5F970000B12A36 /* AudioViewModelProtocol.swift in Sources */,
 				7F87811C2C5E5C2700B12A36 /* SliderView.swift in Sources */,
+				7F8781872C5F975200B12A36 /* Array+Extensions.swift in Sources */,
 				7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */,
 				7F8781392C5EAFF600B12A36 /* ListenScreenMode.swift in Sources */,
 				7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */,

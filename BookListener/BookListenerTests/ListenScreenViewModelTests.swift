@@ -6,77 +6,7 @@
 //
 
 import XCTest
-import SwiftUI
 @testable import BookListener
-
-protocol AudioViewModelProtocol {
-    var isPlaying: Bool { get }
-    var currentChapter: Chapter? { get }
-    var currentDurationInSeconds: Double { get }
-    func togglePlayPause()
-    func reverse()
-    func forward()
-    func previous()
-    func next()
-}
-
-struct Chapter: Hashable {
-    let index: Int
-    let title: String
-}
-
-final class AudioViewModel: AudioViewModelProtocol {
-    private(set) var currentDurationInSeconds: Double
-    private(set) var isPlaying: Bool = false
-    private(set) var currentChapter: Chapter?
-    private let chapters: [Chapter]
-    
-    private enum Constants {
-        static let reverseDurationAmountInSeconds = 5.0
-        static let forwardDurationAmountInSeconds = 1.0
-    }
-    
-    init(
-        currentDurationInSeconds: Double? = nil,
-        chapters: [Chapter],
-        defaultChapterIndex: Int?
-    ) {
-        self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
-        self.chapters = chapters
-        if let defaultChapterIndex, let firstChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
-            self.currentChapter = firstChapter
-        } else {
-            self.currentChapter = chapters.first
-        }
-    }
-    
-    func togglePlayPause() {
-        isPlaying.toggle()
-    }
-    
-    func forward() {
-        self.currentDurationInSeconds += Constants.reverseDurationAmountInSeconds
-    }
-    
-    func reverse() {
-        self.currentDurationInSeconds -= Constants.reverseDurationAmountInSeconds
-    }
-    
-    func previous() {
-        guard let currentChapter else { return }
-        if let previousChapter = chapters.safelyRetrieve(elementAt: currentChapter.index - 1) {
-            self.currentChapter = previousChapter
-        }
-    }
-    
-    func next() {
-        guard let currentChapter else { return }
-        if let nextChapter = chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
-            self.currentChapter = nextChapter
-        }
-    }
-
-}
 
 final class ListenScreenViewModelTests: XCTestCase {
     func test_togglePlayPauseOnce_SetsIsPlayingToTrue() {
@@ -220,15 +150,6 @@ final class ListenScreenViewModelTests: XCTestCase {
         )
     }
 
-}
-
-extension Array {
-    func safelyRetrieve(elementAt index: Int) -> Element? {
-        guard index >= 0, index < endIndex else {
-            return nil
-        }
-        return self[index]
-    }
 }
 
 // MARK: Test helpers
