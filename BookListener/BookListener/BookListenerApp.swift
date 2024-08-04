@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BookListenerApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                ListenScreenView(mode: .listen, isAnimating: true)
+            }
         }
     }
 }

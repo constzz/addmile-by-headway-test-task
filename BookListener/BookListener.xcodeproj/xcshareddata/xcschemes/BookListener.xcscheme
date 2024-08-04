@@ -35,7 +35,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F8780912C5D7CB100B12A36"
+               BlueprintIdentifier = "7F8780C12C5D93A000B12A36"
                BuildableName = "BookListenerTests.xctest"
                BlueprintName = "BookListenerTests"
                ReferencedContainer = "container:BookListener.xcodeproj">
@@ -46,9 +46,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F87809B2C5D7CB100B12A36"
-               BuildableName = "BookListenerUITests.xctest"
-               BlueprintName = "BookListenerUITests"
+               BlueprintIdentifier = "7F8780C12C5D93A000B12A36"
+               BuildableName = "BookListenerTests.xctest"
+               BlueprintName = "BookListenerTests"
                ReferencedContainer = "container:BookListener.xcodeproj">
             </BuildableReference>
          </TestableReference>
