@@ -26,6 +26,15 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var isPlayingNonUpdatingValue: Bool = false
+    
+    func convertProgresToCurrentTime(progress: Double) -> String {
+        return ""
+    }
+    
+    func seekTo(_ value: Double) {
+    }
+    
     var durationTimePublisher: AnyPublisher<String, Never> {
         CurrentValueSubject("1:14").eraseToAnyPublisher()
     }

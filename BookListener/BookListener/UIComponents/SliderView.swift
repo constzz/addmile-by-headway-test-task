@@ -27,7 +27,8 @@ public struct SliderView: View {
     let sliderWidth: CGFloat
     private let sliderHeight: CGFloat
     private let sliderColor: Color
-    private let onChange: ((Double) -> Void)?
+    
+    private let changeSubject: any Subject<Double, Never>
     private let onChangeEnd: ((Double) -> Void)?
 
     public init(
@@ -39,7 +40,7 @@ public struct SliderView: View {
         valuePublisher: AnyPublisher<Double, Never>,
         leftLabelValuePublisher: AnyPublisher<String, Never>,
         rightLabelValuePublisher: AnyPublisher<String, Never>,
-        onChange: ((Double) -> Void)? = nil,
+        changeSubject: any Subject<Double, Never>,
         onChangeEnd: ((Double) -> Void)? = nil
     ) {
         self.title = title
@@ -50,8 +51,8 @@ public struct SliderView: View {
         self.valuePublisher = valuePublisher
         self.leftLabelValuePublisher = leftLabelValuePublisher
         self.rightLabelValuePublisher = rightLabelValuePublisher
-        self.onChange = onChange
         self.onChangeEnd = onChangeEnd
+        self.changeSubject = changeSubject
     }
 
     private var halfThumbSize: CGFloat {
@@ -94,9 +95,7 @@ public struct SliderView: View {
             }
             Text(rightLabelValue)
                 .fixedSize(horizontal: true, vertical: false)
-        }.onAppear {
-            onChange?(value)
-        }
+        }.onAppear()
         .onReceive(valuePublisher) { value in
             self.value = value
         }
@@ -110,7 +109,7 @@ public struct SliderView: View {
 
     private func updateValue() {
         value = Double(offset / (sliderWidth - sliderHeight)) * 100
-        onChange?(value)
+        changeSubject.send(value)
     }
 
     private func updateOffset(to value: Double) {

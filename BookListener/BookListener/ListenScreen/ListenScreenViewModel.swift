@@ -22,6 +22,9 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         isPlayingSubject.eraseToAnyPublisher()
     }
     let isPlayingSubject: CurrentValueSubject<Bool, Never> = .init(false)
+    
+    var isPlayingNonUpdatingValue: Bool { isPlayingSubject.value }
+    
     private(set) var currentChapter: Chapter?
     private let chapters: [Chapter]
     private let audioViewModel: AudioViewModelProtocol
@@ -101,5 +104,13 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         if let nextChapter = chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
             self.currentChapter = nextChapter
         }
+    }
+    
+    func seekTo(_ value: Double) {
+        audioViewModel.seekTo(value)
+    }
+    
+    func convertProgresToCurrentTime(progress: Double) -> String {
+        dateComponentsFormatter.string(from: progress * totalDuration) ?? ""
     }
 }

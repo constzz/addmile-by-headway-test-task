@@ -9,6 +9,8 @@ import Combine
 
 protocol ListenScreenViewModelProtocol {
     var isPlaying: AnyPublisher<Bool, Never> { get }
+    var isPlayingNonUpdatingValue: Bool { get }
+    
     var currentChapter: Chapter? { get }
     var currentDurationInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
@@ -20,4 +22,7 @@ protocol ListenScreenViewModelProtocol {
     func forward()
     func previous()
     func next()
+    func seekTo(_ value: Double)
+    
+    func convertProgresToCurrentTime(progress: Double) -> String
 }

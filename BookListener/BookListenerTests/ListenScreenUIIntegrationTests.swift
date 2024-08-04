@@ -112,7 +112,10 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
             chapters: createRandomChapters(),
             defaultChapterIndex: 0,
             audioViewModel: audioViewModel)
-        let view = ListenScreenView(mode: .listen, isAnimating: false, viewModel: listenScreenViewModel)
+        let view = ListenScreenView(
+            mode: .listen,
+            isAnimating: false,
+            viewModel: listenScreenViewModel)
         return (view, audioViewModel)
     }
 }

@@ -19,8 +19,9 @@ class BookListenerSnapshotTests: XCTestCase {
     func test_sliderView_empty() {
         let sut = SliderView(
             valuePublisher: CurrentValueSubject(0.0).eraseToAnyPublisher(),
-            leftLabelValuePublisher: CurrentValueSubject("0.0").eraseToAnyPublisher(),
-            rightLabelValuePublisher: CurrentValueSubject("74.0").eraseToAnyPublisher())
+            leftLabelValuePublisher: CurrentValueSubject("00:00").eraseToAnyPublisher(),
+            rightLabelValuePublisher: CurrentValueSubject("1:14").eraseToAnyPublisher(),
+            changeSubject: PassthroughSubject())
         assertImageSnapshot(ofView: sut, name: .snapshotName400_per_200, config: .config_400_200_pixels)
     }
     
