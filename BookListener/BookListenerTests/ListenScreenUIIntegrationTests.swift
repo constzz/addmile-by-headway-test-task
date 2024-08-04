@@ -45,6 +45,26 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         
         XCTAssertFalse(audioViewModel.isPlaying)
     }
+    
+    func test_listenScreen_reverseAudio() async throws {
+        let (view, audioViewModel) = makeSUT()
+        await view.forceRender()
+        
+        audioViewModel.seekTo(15.0)
+        try view.hitButtonWith(role: .reverse)
+        
+        XCTAssertEqual(audioViewModel.currentTimeInSeconds, 10.0, accuracy: 0.09)
+    }
+    
+    func test_listenScreen_forwardAudio() async throws {
+        let (view, audioViewModel) = makeSUT()
+        await view.forceRender()
+        
+        audioViewModel.seekTo(15.0)
+        try view.hitButtonWith(role: .forward)
+        
+        XCTAssertEqual(audioViewModel.currentTimeInSeconds, 25.0, accuracy: 0.09)
+    }
 
     
     private func makeSUT(

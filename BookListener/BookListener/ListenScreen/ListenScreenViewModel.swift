@@ -8,7 +8,10 @@
 import Combine
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
-    private(set) var currentDurationInSeconds: Double
+    private(set) var currentDurationInSeconds: Double {
+        get { audioViewModel.currentTimeInSeconds }
+        set { audioViewModel.seekTo(newValue) }
+    }
     var isPlaying: AnyPublisher<Bool, Never> {
         isPlayingSubject.eraseToAnyPublisher()
     }
@@ -19,7 +22,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     private enum Constants {
         static let reverseDurationAmountInSeconds = 5.0
-        static let forwardDurationAmountInSeconds = 1.0
+        static let forwardDurationAmountInSeconds = 10.0
     }
     
     init(
@@ -28,7 +31,6 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         defaultChapterIndex: Int?,
         audioViewModel: AudioViewModelProtocol
     ) {
-        self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
         self.chapters = chapters
         if let defaultChapterIndex, let firstChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
             self.currentChapter = firstChapter
@@ -36,6 +38,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self.currentChapter = chapters.first
         }
         self.audioViewModel = audioViewModel
+        self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
     }
     
     func togglePlayPause() {
@@ -44,7 +47,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     func forward() {
-        self.currentDurationInSeconds += Constants.reverseDurationAmountInSeconds
+        self.currentDurationInSeconds += Constants.forwardDurationAmountInSeconds
     }
     
     func reverse() {

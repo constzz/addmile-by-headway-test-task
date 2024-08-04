@@ -45,7 +45,7 @@ final class ListenScreenViewModelTests: XCTestCase {
     func test_forward_forwardsDuration5SecondsBack() {
         let sut = makeSUT(currentDurationInSeconds: 11.0)
         sut.forward()
-        XCTAssertEqual(sut.currentDurationInSeconds, 16.0)
+        XCTAssertEqual(sut.currentDurationInSeconds, 21.0)
     }
     
     func test_initialChapterIsFirstFromTheList() {

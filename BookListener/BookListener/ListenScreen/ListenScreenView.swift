@@ -31,10 +31,10 @@ struct ListenScreenView: View {
                 SliderView(value: .constant(50), leftLabelValue: .constant("0.0"), rightLabelValue: .constant("0.0"))
                 PlaybackControlView(state: .init(
                     previousAction: {},
-                    reverseAction: {},
+                    reverseAction: { viewModel.reverse() },
                     playAction: { viewModel.togglePlayPause() },
                     pauseAction: { viewModel.togglePlayPause() },
-                    forwardAction: {},
+                    forwardAction: { viewModel.forward() },
                     nextAction: {}),
                                     isPlayActivePublisher: viewModel.isPlaying
                 )
