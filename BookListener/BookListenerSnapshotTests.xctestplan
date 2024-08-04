@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "7AC1BEE3-3A5B-4D41-BF9D-C9D39E6F56DF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ListenScreenViewModelTests"
+      ],
+      "target" : {
+        "containerPath" : "container:BookListener.xcodeproj",
+        "identifier" : "7F8780C12C5D93A000B12A36",
+        "name" : "BookListenerTests"
+      }
+    }
+  ],
+  "version" : 1
+}
