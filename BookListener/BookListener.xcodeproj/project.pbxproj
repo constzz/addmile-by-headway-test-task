@@ -41,6 +41,14 @@
 		7F8781662C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */; };
 		7F8781672C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781632C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png */; };
 		7F8781682C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */; };
+		7F87816A2C5F69BA00B12A36 /* ListenScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */; };
+		7F87816C2C5F69E800B12A36 /* ListenScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */; };
+		7F8781742C5F859E00B12A36 /* 00 Introduction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */; };
+		7F8781752C5F859E00B12A36 /* 01 Chapter 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */; };
+		7F8781762C5F859E00B12A36 /* 02 Chapter 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */; };
+		7F8781772C5F859E00B12A36 /* 03 Chapter 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */; };
+		7F8781782C5F859E00B12A36 /* 04 Chapter 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */; };
+		7F8781792C5F859E00B12A36 /* 05 Chapter 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +96,16 @@
 		7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F8781632C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
+		7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModelTests.swift; sourceTree = "<group>"; };
+		7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModel.swift; sourceTree = "<group>"; };
+		7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "00 Introduction.mp3"; sourceTree = "<group>"; };
+		7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Chapter 1.mp3"; sourceTree = "<group>"; };
+		7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Chapter 2.mp3"; sourceTree = "<group>"; };
+		7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "03 Chapter 3.mp3"; sourceTree = "<group>"; };
+		7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "04 Chapter 4.mp3"; sourceTree = "<group>"; };
+		7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "05 Chapter 5.mp3"; sourceTree = "<group>"; };
+		7F87817B2C5F86B300B12A36 /* BookListenerUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookListenerUnitTests.xctestplan; sourceTree = "<group>"; };
+		7F87817C2C5F876D00B12A36 /* BookListenerSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BookListenerSnapshotTests.xctestplan; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +149,7 @@
 		7F8780842C5D7CAF00B12A36 /* BookListener */ = {
 			isa = PBXGroup;
 			children = (
+				7F8781732C5F859E00B12A36 /* Mock */,
 				7F87812D2C5E95E100B12A36 /* ListenScreen */,
 				7F87811E2C5E672D00B12A36 /* Utility */,
 				7F8780F62C5E404700B12A36 /* UIComponents */,
@@ -152,10 +171,13 @@
 		7F8780C32C5D93A000B12A36 /* BookListenerTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F87817B2C5F86B300B12A36 /* BookListenerUnitTests.xctestplan */,
+				7F87817C2C5F876D00B12A36 /* BookListenerSnapshotTests.xctestplan */,
 				7F8780F12C5E3E2300B12A36 /* __Snapshots__ */,
 				7F8780E52C5E355900B12A36 /* Helpers */,
 				7F8780D12C5D94B200B12A36 /* BookListenerSnapshotTests.swift */,
 				7F87814E2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift */,
+				7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */,
 			);
 			path = BookListenerTests;
 			sourceTree = "<group>";
@@ -229,6 +251,7 @@
 				7F8781372C5EAFF000B12A36 /* Models */,
 				7F8781302C5E983000B12A36 /* UIComponents */,
 				7F87812E2C5E95F400B12A36 /* ListenScreenView.swift */,
+				7F87816B2C5F69E800B12A36 /* ListenScreenViewModel.swift */,
 			);
 			path = ListenScreen;
 			sourceTree = "<group>";
@@ -260,6 +283,19 @@
 				7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */,
 			);
 			path = ListenScreenSnapshotTests;
+			sourceTree = "<group>";
+		};
+		7F8781732C5F859E00B12A36 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */,
+				7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */,
+				7F87816F2C5F859E00B12A36 /* 02 Chapter 2.mp3 */,
+				7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */,
+				7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */,
+				7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */,
+				7F8781772C5F859E00B12A36 /* 03 Chapter 3.mp3 in Resources */,
+				7F8781782C5F859E00B12A36 /* 04 Chapter 4.mp3 in Resources */,
 				7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */,
+				7F8781762C5F859E00B12A36 /* 02 Chapter 2.mp3 in Resources */,
+				7F8781742C5F859E00B12A36 /* 00 Introduction.mp3 in Resources */,
+				7F8781752C5F859E00B12A36 /* 01 Chapter 1.mp3 in Resources */,
+				7F8781792C5F859E00B12A36 /* 05 Chapter 5.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +433,7 @@
 				7F87812F2C5E95F400B12A36 /* ListenScreenView.swift in Sources */,
 				7F8781342C5E987C00B12A36 /* ChapterInfoView.swift in Sources */,
 				7F8781362C5EAFC900B12A36 /* ToggleView.swift in Sources */,
+				7F87816C2C5F69E800B12A36 /* ListenScreenViewModel.swift in Sources */,
 				7F8781322C5E983F00B12A36 /* CoverImageView.swift in Sources */,
 				7F87811C2C5E5C2700B12A36 /* SliderView.swift in Sources */,
 				7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */,
@@ -406,6 +449,7 @@
 			files = (
 				7F87814F2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift in Sources */,
 				7F8780D22C5D94B200B12A36 /* BookListenerSnapshotTests.swift in Sources */,
+				7F87816A2C5F69BA00B12A36 /* ListenScreenViewModelTests.swift in Sources */,
 				7F8780E72C5E357600B12A36 /* SnapshotTestsHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
