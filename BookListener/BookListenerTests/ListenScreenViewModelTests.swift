@@ -171,7 +171,7 @@ final class ListenScreenViewModelTests: XCTestCase {
 // MARK: Test helpers
 extension ListenScreenViewModelProtocol {
     func togglePlayPause(amountOfTimes: Int) {
-        for i in 1...amountOfTimes {
+        for _ in 1...amountOfTimes {
             togglePlayPause()
         }
     }
