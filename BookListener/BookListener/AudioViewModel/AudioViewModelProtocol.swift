@@ -8,12 +8,4 @@
 import Foundation
 
 protocol AudioViewModelProtocol {
-    var isPlaying: Bool { get }
-    var currentChapter: Chapter? { get }
-    var currentDurationInSeconds: Double { get }
-    func togglePlayPause()
-    func reverse()
-    func forward()
-    func previous()
-    func next()
 }

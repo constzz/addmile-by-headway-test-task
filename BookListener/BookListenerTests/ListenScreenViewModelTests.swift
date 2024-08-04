@@ -126,7 +126,7 @@ final class ListenScreenViewModelTests: XCTestCase {
         is expectedChapterToOpen: Chapter?,
         ifCurrentIndexIs index: Int,
         chatpers: [Chapter]?,
-        afterAction action: (AudioViewModelProtocol) -> Void,
+        afterAction action: (ListenScreenViewModelProtocol) -> Void,
         file filePath: StaticString = #filePath,
         line: UInt = #line
     ) {
@@ -142,8 +142,8 @@ final class ListenScreenViewModelTests: XCTestCase {
         currentDurationInSeconds: Double? = nil,
         chapters: [Chapter]? = nil,
         defaultChapterIndex: Int? = nil
-    ) -> AudioViewModelProtocol {
-        return AudioViewModel(
+    ) -> ListenScreenViewModelProtocol {
+        return ListenScreenViewModel(
             currentDurationInSeconds: currentDurationInSeconds,
             chapters: chapters ?? createRandomChapters(),
             defaultChapterIndex: defaultChapterIndex
@@ -153,7 +153,7 @@ final class ListenScreenViewModelTests: XCTestCase {
 }
 
 // MARK: Test helpers
-extension AudioViewModelProtocol {
+extension ListenScreenViewModelProtocol {
     func togglePlayPause(amountOfTimes: Int) {
         for i in 1...amountOfTimes {
             togglePlayPause()

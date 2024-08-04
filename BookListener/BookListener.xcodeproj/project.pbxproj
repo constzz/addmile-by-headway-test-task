@@ -52,6 +52,8 @@
 		7F8781812C5F971800B12A36 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781802C5F971800B12A36 /* AudioViewModel.swift */; };
 		7F8781852C5F973E00B12A36 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781842C5F973E00B12A36 /* Chapter.swift */; };
 		7F8781872C5F975200B12A36 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781862C5F975200B12A36 /* Array+Extensions.swift */; };
+		7F8781892C5F99CE00B12A36 /* ListenScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781882C5F99CE00B12A36 /* ListenScreenViewModel.swift */; };
+		7F87818B2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87818A2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		7F8781802C5F971800B12A36 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
 		7F8781842C5F973E00B12A36 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		7F8781862C5F975200B12A36 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		7F8781882C5F99CE00B12A36 /* ListenScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModel.swift; sourceTree = "<group>"; };
+		7F87818A2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				7F8781372C5EAFF000B12A36 /* Models */,
 				7F8781302C5E983000B12A36 /* UIComponents */,
 				7F87812E2C5E95F400B12A36 /* ListenScreenView.swift */,
+				7F8781882C5F99CE00B12A36 /* ListenScreenViewModel.swift */,
+				7F87818A2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift */,
 			);
 			path = ListenScreen;
 			sourceTree = "<group>";
@@ -453,7 +459,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F87818B2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift in Sources */,
 				7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */,
+				7F8781892C5F99CE00B12A36 /* ListenScreenViewModel.swift in Sources */,
 				7F8780F82C5E406200B12A36 /* PlaybackControlView.swift in Sources */,
 				7F87812F2C5E95F400B12A36 /* ListenScreenView.swift in Sources */,
 				7F8781342C5E987C00B12A36 /* ChapterInfoView.swift in Sources */,
