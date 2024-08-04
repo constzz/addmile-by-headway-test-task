@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F48B3D92C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3D82C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F48B3D82C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenUIIntegrationTests.swift; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				7F87814E2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift */,
 				7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */,
 				7F87818C2C5F9AA100B12A36 /* AudioViewModelAVFoundationIntegrationTests.swift */,
+				7F48B3D82C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift */,
 			);
 			path = BookListenerTests;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				7F8780D22C5D94B200B12A36 /* BookListenerSnapshotTests.swift in Sources */,
 				7F87816A2C5F69BA00B12A36 /* ListenScreenViewModelTests.swift in Sources */,
 				7F8780E72C5E357600B12A36 /* SnapshotTestsHelpers.swift in Sources */,
+				7F48B3D92C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

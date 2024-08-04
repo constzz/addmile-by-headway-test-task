@@ -12,6 +12,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     private(set) var isPlaying: Bool = false
     private(set) var currentChapter: Chapter?
     private let chapters: [Chapter]
+    private let audioViewModel: AudioViewModelProtocol
     
     private enum Constants {
         static let reverseDurationAmountInSeconds = 5.0
@@ -21,7 +22,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     init(
         currentDurationInSeconds: Double? = nil,
         chapters: [Chapter],
-        defaultChapterIndex: Int?
+        defaultChapterIndex: Int?,
+        audioViewModel: AudioViewModelProtocol
     ) {
         self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
         self.chapters = chapters
@@ -30,10 +32,12 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         } else {
             self.currentChapter = chapters.first
         }
+        self.audioViewModel = audioViewModel
     }
     
     func togglePlayPause() {
         isPlaying.toggle()
+        isPlaying ? audioViewModel.play() : audioViewModel.pause()
     }
     
     func forward() {

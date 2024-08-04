@@ -13,7 +13,7 @@ struct BookListenerApp: App {
     var body: some Scene {
         WindowGroup {
             VStack {
-                ListenScreenView(mode: .listen, isAnimating: true)
+                ListenScreenView(mode: .listen, isAnimating: true, viewModel: ListenScreenViewModel(chapters: [], defaultChapterIndex: nil, audioViewModel: AudioViewModel(book: .init())))
             }
         }
     }

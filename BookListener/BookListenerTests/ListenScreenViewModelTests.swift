@@ -146,7 +146,8 @@ final class ListenScreenViewModelTests: XCTestCase {
         return ListenScreenViewModel(
             currentDurationInSeconds: currentDurationInSeconds,
             chapters: chapters ?? createRandomChapters(),
-            defaultChapterIndex: defaultChapterIndex
+            defaultChapterIndex: defaultChapterIndex, 
+            audioViewModel: AudioViewModel(book: .init())
         )
     }
 
@@ -161,7 +162,7 @@ extension ListenScreenViewModelProtocol {
     }
 }
 
-private func createRandomChapters() -> [Chapter] {
+func createRandomChapters() -> [Chapter] {
     ["Lorem 1", "Ipsum here 2", "No bumu 3", "Smth 4"].enumerated().map { index, title in
         return .init(index: index, title: title)
     }

@@ -11,6 +11,7 @@ struct ListenScreenView: View {
     
     @State var mode: ListenScreenMode
     @State var isAnimating: Bool
+    let viewModel: ListenScreenViewModelProtocol
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
     var body: some View {
@@ -30,5 +31,6 @@ struct ListenScreenView: View {
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         .background(.biege)
+        .onAppear { viewModel.togglePlayPause() }
     }
 }
