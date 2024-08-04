@@ -24,6 +24,12 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
         sut.pause()
         XCTAssertFalse(sut.player.isPlaying)
     }
+    
+    func test_notPlaysByDefault() {
+        let sut = makeSUT()
+        
+        XCTAssertFalse(sut.player.isPlaying)
+    }
 
     
     private func makeSUT(
