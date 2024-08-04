@@ -16,8 +16,8 @@ protocol AudioViewModelProtocol {
     func togglePlayPause()
     func reverse()
     func forward()
-//    func previous()
-//    func next()
+    func previous()
+    func next()
 }
 
 struct Chapter: Hashable {
@@ -36,10 +36,18 @@ final class AudioViewModel: AudioViewModelProtocol {
         static let forwardDurationAmountInSeconds = 1.0
     }
     
-    init(currentDurationInSeconds: Double? = nil, chapters: [Chapter]) {
+    init(
+        currentDurationInSeconds: Double? = nil,
+        chapters: [Chapter],
+        defaultChapterIndex: Int?
+    ) {
         self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
         self.chapters = chapters
-        self.currentChapter = chapters.first
+        if let defaultChapterIndex {
+            self.currentChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex)
+        } else {
+            self.currentChapter = chapters.first
+        }
     }
     
     func togglePlayPause() {
@@ -53,6 +61,21 @@ final class AudioViewModel: AudioViewModelProtocol {
     func reverse() {
         self.currentDurationInSeconds -= Constants.reverseDurationAmountInSeconds
     }
+    
+    func previous() {
+        guard let currentChapter else { return }
+        if let previousChapter = chapters.safelyRetrieve(elementAt: currentChapter.index - 1) {
+            self.currentChapter = previousChapter
+        }
+    }
+    
+    func next() {
+        guard let currentChapter else { return }
+        if let nextChapter = chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
+            self.currentChapter = nextChapter
+        }
+    }
+
 }
 
 final class ListenScreenViewModelTests: XCTestCase {
@@ -103,17 +126,96 @@ final class ListenScreenViewModelTests: XCTestCase {
         
         XCTAssertEqual(sut.currentChapter, nil)
     }
+        
+    func test_previousSetsPreviousChapter() {
+        let chapters = createRandomChapters()
+        let currentIndex = 2
+        let expectedChapterToOpen = chapters.safelyRetrieve(elementAt: 1)
+
+        assertCurrentChapterOfAudioViewModel(
+            is: expectedChapterToOpen,
+            ifCurrentIndexIs: currentIndex,
+            chatpers: chapters,
+            afterAction: { sut in sut.previous() }
+        )
+    }
+    
+    func test_previousRemainsSameChapter_ifCurrentIsFirst() {
+        let chapters = createRandomChapters()
+        let currentIndex = 0
+        let expectedChapterToOpen = chapters.first
+
+        assertCurrentChapterOfAudioViewModel(
+            is: expectedChapterToOpen,
+            ifCurrentIndexIs: currentIndex,
+            chatpers: chapters,
+            afterAction: { sut in sut.previous() }
+        )
+    }
+    
+    func test_nextSetsNextChapter() {
+        let chapters = createRandomChapters()
+        let currentIndex = 2
+        let expectedChapterToOpen = chapters.safelyRetrieve(elementAt: 3)
+
+        assertCurrentChapterOfAudioViewModel(
+            is: expectedChapterToOpen,
+            ifCurrentIndexIs: currentIndex,
+            chatpers: chapters,
+            afterAction: { sut in sut.next() }
+        )
+    }
+    
+    func test_nextRemainsSameChapter_ifCurrentIsLast() {
+        let chapters = createRandomChapters()
+        let currentIndex = chapters.count - 1
+        let expectedChapterToOpen = chapters.last
+
+        assertCurrentChapterOfAudioViewModel(
+            is: expectedChapterToOpen,
+            ifCurrentIndexIs: currentIndex,
+            chatpers: chapters,
+            afterAction: { sut in sut.next() }
+        )
+    }
+    
+    private func assertCurrentChapterOfAudioViewModel(
+        is expectedChapterToOpen: Chapter?,
+        ifCurrentIndexIs index: Int,
+        chatpers: [Chapter]?,
+        afterAction action: (AudioViewModelProtocol) -> Void,
+        file filePath: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        XCTAssertNotNil(expectedChapterToOpen, file: filePath, line: line)
+        
+        let sut = makeSUT(chapters: chatpers, defaultChapterIndex: index)
+        action(sut)
+        XCTAssertEqual(sut.currentChapter, expectedChapterToOpen, file: filePath, line: line)
+    }
+
     
     private func makeSUT(
         currentDurationInSeconds: Double? = nil,
-        chapters: [Chapter]? = nil
+        chapters: [Chapter]? = nil,
+        defaultChapterIndex: Int? = nil
     ) -> AudioViewModelProtocol {
         return AudioViewModel(
             currentDurationInSeconds: currentDurationInSeconds,
-            chapters: chapters ?? createRandomChapters()
+            chapters: chapters ?? createRandomChapters(),
+            defaultChapterIndex: defaultChapterIndex
         )
     }
 
+}
+
+extension Array {
+    func safelyRetrieve(elementAt index: Int) -> Element? {
+        guard index >= 0, index < endIndex else {
+            return nil
+        }
+        return self[index]
+    }
 }
 
 // MARK: Test helpers
