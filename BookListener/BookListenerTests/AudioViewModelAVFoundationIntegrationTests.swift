@@ -37,6 +37,14 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.currentTimeInSeconds, 0.0)
     }
     
+    func test_seekToChangesCurrentTime() {
+        let sut = makeSUT()
+        
+        sut.seekTo(3.0)
+        
+        XCTAssertEqual(sut.currentTimeInSeconds, 3.0)
+    }
+    
     private func makeSUT(
     ) -> AudioViewModel {
         return AudioViewModel(book: .init())

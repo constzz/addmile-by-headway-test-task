@@ -29,5 +29,9 @@ final class AudioViewModel: AudioViewModelProtocol {
     func pause() {
         player.pause()
     }
+    
+    func seekTo(_ value: Double) {
+        player.currentTime = value
+    }
 
 }

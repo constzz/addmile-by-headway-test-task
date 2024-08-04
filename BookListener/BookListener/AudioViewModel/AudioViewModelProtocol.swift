@@ -15,4 +15,5 @@ protocol AudioViewModelProtocol {
     var currentTimeInSeconds: Double { get }
     func play()
     func pause()
+    func seekTo(_ value: Double)
 }
