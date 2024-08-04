@@ -39,4 +39,9 @@ class BookListenerSnapshotTests: XCTestCase {
         )
         self.assertImageSnapshot(ofView: view, name: .snapshotName400_per_200, config: .config_400_200_pixels)
     }
+    
+    func test_chapterInfoView() {
+        let view = ChapterInfoView()
+        self.assertImageSnapshot(ofView: view, name: .snapshotName300_per_200, config: .config_300_200_pixels)
+    }
 }
