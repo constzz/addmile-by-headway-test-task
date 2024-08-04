@@ -13,6 +13,10 @@ final class AudioViewModel: AudioViewModelProtocol {
     let player: AVAudioPlayer
     let book: Book
     
+    var currentTimeInSeconds: Double {
+        player.currentTime
+    }
+    
     init(book: Book) {
         self.book = book
         self.player = (try? .init(contentsOf: book.url)) ?? .init()

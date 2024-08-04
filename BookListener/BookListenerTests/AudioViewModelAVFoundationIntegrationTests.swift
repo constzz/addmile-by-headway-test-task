@@ -30,7 +30,12 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
         
         XCTAssertFalse(sut.player.isPlaying)
     }
-
+    
+    func test_currentTimeByDefaultIsZero() {
+        let sut = makeSUT()
+        
+        XCTAssertEqual(sut.currentTimeInSeconds, 0.0)
+    }
     
     private func makeSUT(
     ) -> AudioViewModel {

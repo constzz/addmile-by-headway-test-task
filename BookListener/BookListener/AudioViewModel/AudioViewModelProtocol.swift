@@ -12,6 +12,7 @@ struct Book {
 }
 
 protocol AudioViewModelProtocol {
+    var currentTimeInSeconds: Double { get }
     func play()
     func pause()
 }
