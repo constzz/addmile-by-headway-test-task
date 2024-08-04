@@ -32,7 +32,6 @@ extension XCTestCase {
                 of: view,
                 as: .image(layout: .device(config: config.withUserInterfaceStyle(style))),
                 named: name?.appending("_\(style.title)"),
-                timeout: 0.1,
                 fileID: fileID,
                 file: filePath,
                 testName: testName,
