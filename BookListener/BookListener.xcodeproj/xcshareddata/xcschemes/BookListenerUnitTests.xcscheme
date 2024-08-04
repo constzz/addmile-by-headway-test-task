@@ -14,11 +14,8 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:BookListenerUnitTests.xctestplan"
+            reference = "container:BookListenerTests/BookListenerUnitTestPlan.xctestplan"
             default = "YES">
-         </TestPlanReference>
-         <TestPlanReference
-            reference = "container:BookListenerUnitTests.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>

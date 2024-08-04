@@ -7,5 +7,11 @@
 
 import Foundation
 
+struct Book {
+    let url: URL = Bundle.main.url(forResource: "00 Introduction", withExtension: "mp3")!
+}
+
 protocol AudioViewModelProtocol {
+    func play()
+    func pause()
 }
