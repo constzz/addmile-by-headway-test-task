@@ -5,10 +5,10 @@
 //  Created by Konstantin Bezzemelnyi on 04.08.2024.
 //
 
-import Foundation
+import Combine
 
 protocol ListenScreenViewModelProtocol {
-    var isPlaying: Bool { get }
+    var isPlaying: AnyPublisher<Bool, Never> { get }
     var currentChapter: Chapter? { get }
     var currentDurationInSeconds: Double { get }
     func togglePlayPause()

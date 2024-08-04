@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 @testable import BookListener
 
 final class ListenScreenSnapshotTests: XCTestCase {
@@ -25,8 +26,7 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
-    
-    var isPlaying: Bool = false
+    var isPlaying: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
     
     var currentChapter: BookListener.Chapter?
     

@@ -5,11 +5,14 @@
 //  Created by Konstantin Bezzemelnyi on 04.08.2024.
 //
 
-import Foundation
+import Combine
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     private(set) var currentDurationInSeconds: Double
-    private(set) var isPlaying: Bool = false
+    var isPlaying: AnyPublisher<Bool, Never> {
+        isPlayingSubject.eraseToAnyPublisher()
+    }
+    let isPlayingSubject: CurrentValueSubject<Bool, Never> = .init(false)
     private(set) var currentChapter: Chapter?
     private let chapters: [Chapter]
     private let audioViewModel: AudioViewModelProtocol
@@ -36,8 +39,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     func togglePlayPause() {
-        isPlaying.toggle()
-        isPlaying ? audioViewModel.play() : audioViewModel.pause()
+        isPlayingSubject.send(!isPlayingSubject.value)
+        isPlayingSubject.value ? audioViewModel.play() : audioViewModel.pause()
     }
     
     func forward() {

@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ListenScreenView: View {
     
-    @State var mode: ListenScreenMode
-    @State var isAnimating: Bool
-    let viewModel: ListenScreenViewModelProtocol
+    @State private var mode: ListenScreenMode
+    @State private var isAnimating: Bool
+    @State private var isPlaying: Bool = false
+    private let viewModel: ListenScreenViewModelProtocol
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
+    
+    init(mode: ListenScreenMode, isAnimating: Bool, viewModel: ListenScreenViewModelProtocol) {
+        self.mode = mode
+        self.isAnimating = isAnimating
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
@@ -21,7 +29,15 @@ struct ListenScreenView: View {
                 CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
                 ChapterInfoView()
                 SliderView(value: .constant(50), leftLabelValue: .constant("0.0"), rightLabelValue: .constant("0.0"))
-                PlaybackControlView()
+                PlaybackControlView(state: .init(
+                    previousAction: {},
+                    reverseAction: {},
+                    playAction: { viewModel.togglePlayPause() },
+                    pauseAction: { viewModel.togglePlayPause() },
+                    forwardAction: {},
+                    nextAction: {}),
+                                    isPlayActivePublisher: viewModel.isPlaying
+                )
             case .read:
                 Rectangle()
                     .foregroundStyle(.darkBiege)

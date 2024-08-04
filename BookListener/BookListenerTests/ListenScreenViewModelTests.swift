@@ -6,25 +6,29 @@
 //
 
 import XCTest
+import Combine
 @testable import BookListener
 
 final class ListenScreenViewModelTests: XCTestCase {
-    func test_togglePlayPauseOnce_SetsIsPlayingToTrue() {
+    private var cancellables = Set<AnyCancellable>()
+        
+    func test_togglePlayPauseOnce_SetsIsPlayingToTrue() async throws {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 1)
-        XCTAssertTrue(sut.isPlaying)
+        
+        waitForIsPlayingPublishing(sut: sut, expectedValue: true)
     }
     
     func test_togglePlayPauseTwice_SetsIsPlayingToFalse() {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 2)
-        XCTAssertFalse(sut.isPlaying)
+        waitForIsPlayingPublishing(sut: sut, expectedValue: false)
     }
     
     func test_togglePlayPauseTriple_SetsIsPlayingToTrue() {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 3)
-        XCTAssertTrue(sut.isPlaying)
+        waitForIsPlayingPublishing(sut: sut, expectedValue: true)
     }
     
     func test_initialDurationIsZeroByDefault() {
@@ -149,6 +153,17 @@ final class ListenScreenViewModelTests: XCTestCase {
             defaultChapterIndex: defaultChapterIndex, 
             audioViewModel: AudioViewModel(book: .init())
         )
+    }
+    
+    private func waitForIsPlayingPublishing(
+        sut: ListenScreenViewModelProtocol,
+        expectedValue: Bool,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        sut.isPlaying.first().sink(receiveValue: { isPlaying in
+            XCTAssertEqual(isPlaying, expectedValue, file: file, line: line)
+        }).store(in: &cancellables)
     }
 
 }

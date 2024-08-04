@@ -7,11 +7,12 @@
 
 @testable import BookListener
 import XCTest
+import Combine
 
 class BookListenerSnapshotTests: XCTestCase {
         
     func test_playbackControlView() {
-        let sut = PlaybackControlView()
+        let sut = PlaybackControlView(state: .init(previousAction: {}, reverseAction: {}, playAction: {}, pauseAction: {}, forwardAction: {}, nextAction: {}), isPlayActivePublisher: Empty().eraseToAnyPublisher())
         assertImageSnapshot(ofView: sut, name: .snapshotName300_per_200, config: .config_300_200_pixels)
     }
     
