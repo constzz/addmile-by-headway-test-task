@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListenScreenView: View {
     
-    @State private var mode: ListenScreenMode = .listen
+    @State var mode: ListenScreenMode
     @State var isAnimating: Bool
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
