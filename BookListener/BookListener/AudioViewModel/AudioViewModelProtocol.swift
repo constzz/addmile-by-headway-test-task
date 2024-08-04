@@ -13,6 +13,7 @@ struct Book {
 
 protocol AudioViewModelProtocol {
     var currentTimeInSeconds: Double { get }
+    var speed: Float { get }
     func play()
     func pause()
     func seekTo(_ value: Double)

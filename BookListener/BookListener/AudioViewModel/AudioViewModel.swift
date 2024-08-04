@@ -17,6 +17,11 @@ final class AudioViewModel: AudioViewModelProtocol {
         player.currentTime
     }
     
+    var speed: Float {
+        get { player.rate }
+        set { player.rate = newValue }
+    }
+    
     init(book: Book) {
         self.book = book
         self.player = (try? .init(contentsOf: book.url)) ?? .init()
@@ -32,6 +37,10 @@ final class AudioViewModel: AudioViewModelProtocol {
     
     func seekTo(_ value: Double) {
         player.currentTime = value
+    }
+    
+    func changePlaybackSpeed(_ speed: Float) {
+        self.speed = speed
     }
 
 }

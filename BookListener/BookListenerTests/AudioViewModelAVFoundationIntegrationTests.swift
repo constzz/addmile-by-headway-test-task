@@ -45,6 +45,22 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.currentTimeInSeconds, 3.0)
     }
     
+    func test_defaultSpeedIsOne() {
+        let sut = makeSUT()
+        
+        XCTAssertEqual(1.0, sut.speed)
+    }
+    
+    func test_changesSpeed() {
+        let speeds: [Float] = [0.25, 0.50, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        let sut = makeSUT()
+        
+        speeds.forEach { speed in
+            sut.changePlaybackSpeed(speed)
+            XCTAssertEqual(sut.speed, speed)
+        }
+    }
+    
     private func makeSUT(
     ) -> AudioViewModel {
         return AudioViewModel(book: .init())
