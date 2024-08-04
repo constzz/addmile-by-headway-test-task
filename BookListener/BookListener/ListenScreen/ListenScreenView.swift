@@ -14,6 +14,9 @@ struct ListenScreenView: View {
     @State private var isAnimating: Bool
     @State private var isPlaying: Bool = false
     private let viewModel: ListenScreenViewModelProtocol
+    
+    @State private var currentDurationString: String = ""
+    
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
     init(mode: ListenScreenMode, isAnimating: Bool, viewModel: ListenScreenViewModelProtocol) {
@@ -28,7 +31,10 @@ struct ListenScreenView: View {
             case .listen:
                 CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
                 ChapterInfoView()
-                SliderView(value: .constant(50), leftLabelValue: .constant("0.0"), rightLabelValue: .constant("0.0"))
+                SliderView(
+                    valuePublisher: viewModel.progressPublisher,
+                    leftLabelValuePublisher: viewModel.currentTimePublisher,
+                    rightLabelValue: .constant("0.0"))
                 PlaybackControlView(state: .init(
                     previousAction: {},
                     reverseAction: { viewModel.reverse() },
@@ -48,5 +54,8 @@ struct ListenScreenView: View {
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         .background(.biege)
         .onAppear { viewModel.togglePlayPause() }
+        .onReceive(viewModel.currentDurationInSeconds) { _ in
+            
+        }
     }
 }

@@ -7,22 +7,33 @@
 
 import Foundation
 import AVKit
+import Combine
 
 final class AudioViewModel: AudioViewModelProtocol {
     
     let player: AVAudioPlayer
     let book: Book
     
-    var currentTimeInSeconds: Double {
-        player.currentTime
+    var currentTimeInSeconds: AnyPublisher<Double, Never> {
+        currentTimeInSecondsSubject.eraseToAnyPublisher()
+    }
+    
+    private lazy var currentTimeInSecondsSubject: CurrentValueSubject<Double, Never> = .init(0.0)
+    
+    var totalDurationInSeconds: Double {
+        player.duration
     }
     
     private(set) lazy var isPlaying: Bool = player.isPlaying
+    
+    private var currentTimeObserver: NSKeyValueObservation?
     
     var speed: Float {
         get { player.rate }
         set { player.rate = newValue }
     }
+    
+    private var timer: Timer?
     
     init(book: Book) {
         self.book = book
@@ -33,6 +44,8 @@ final class AudioViewModel: AudioViewModelProtocol {
         }, decodeErrorDidOccur: { error in
             print("error occured")
         })
+        currentTimeInSecondsSubject.send(player.currentTime)
+        setupTimer()
     }
     
     func play() {
@@ -47,11 +60,34 @@ final class AudioViewModel: AudioViewModelProtocol {
     
     func seekTo(_ value: Double) {
         player.currentTime = value
+        self.currentTimeInSecondsSubject.send(value)
     }
     
     func changePlaybackSpeed(_ speed: Float) {
         self.speed = speed
     }
+    
+    func forward(seconds: Double) {
+        seekTo(Double(player.currentTime) + seconds)
+    }
+    
+    func reverse(seconds: Double) {
+        seekTo(Double(player.currentTime) - seconds)
+    }
+    
+}
+
+private extension AudioViewModel {
+    func setupTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(playerTimerAction), userInfo: nil, repeats: true)
+        timer?.fireDate = Date()
+    }
+
+    @objc private func playerTimerAction() {
+        currentTimeInSecondsSubject.send(player.currentTime.preciceCeil(to: .hundredths))
+    }
+
 }
 
 private final class AudioDelegate: NSObject, AVAudioPlayerDelegate {

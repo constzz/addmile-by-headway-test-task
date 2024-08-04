@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7F48B3D92C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3D82C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift */; };
 		7F48B3DC2C5FAFA7006CCB29 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 7F48B3DB2C5FAFA7006CCB29 /* ViewInspector */; };
+		7F48B3DF2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3DD2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */; };
+		7F48B3E02C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3DE2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -33,8 +35,6 @@
 		7F8781402C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87813C2C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png */; };
 		7F8781412C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87813D2C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_light.png */; };
 		7F87814F2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F87814E2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift */; };
-		7F8781572C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781552C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */; };
-		7F8781582C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781562C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_light.png */; };
 		7F87815B2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781592C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png */; };
 		7F87815C2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87815A2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png */; };
 		7F87815E2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87815D2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png */; };
@@ -71,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		7F48B3D82C5FA608006CCB29 /* ListenScreenUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenUIIntegrationTests.swift; sourceTree = "<group>"; };
+		7F48B3DD2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_light.png; sourceTree = "<group>"; };
+		7F48B3DE2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		7F87813C2C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_toggleView_readMode.400_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F87813D2C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_toggleView_readMode.400_200_pixels_light.png; sourceTree = "<group>"; };
 		7F87814E2C5F5EF600B12A36 /* ListenScreenSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenSnapshotTests.swift; sourceTree = "<group>"; };
-		7F8781552C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_dark.png; sourceTree = "<group>"; };
-		7F8781562C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_light.png; sourceTree = "<group>"; };
 		7F8781592C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_chapterInfoView.300_200_pixels_light.png; sourceTree = "<group>"; };
 		7F87815A2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_chapterInfoView.300_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F87815D2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_coverImageView.200_300_pixels_dark.png; sourceTree = "<group>"; };
@@ -213,12 +213,12 @@
 		7F8780F02C5E3E2300B12A36 /* BookListenerSnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F48B3DE2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */,
+				7F48B3DD2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */,
 				7F87815F2C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png */,
 				7F87815D2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png */,
 				7F87815A2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png */,
 				7F8781592C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png */,
-				7F8781552C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_dark.png */,
-				7F8781562C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_light.png */,
 				7F87813A2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_dark.png */,
 				7F87813B2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_light.png */,
 				7F87813C2C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png */,
@@ -446,16 +446,16 @@
 				7F8781682C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */,
 				7F87813F2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_light.png in Resources */,
 				7F8781412C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_light.png in Resources */,
+				7F48B3E02C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */,
 				7F8781282C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */,
 				7F87813E2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_dark.png in Resources */,
 				7F8781652C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */,
 				7F87815E2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png in Resources */,
 				7F87815B2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png in Resources */,
 				7F8781662C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */,
-				7F8781572C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */,
 				7F8781602C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png in Resources */,
-				7F8781582C5F64ED00B12A36 /* test_sliderView_empty.400_200_pixels_light.png in Resources */,
 				7F8781402C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png in Resources */,
+				7F48B3DF2C5FF0F6006CCB29 /* test_sliderView_empty.400_200_pixels_light.png in Resources */,
 				7F8781272C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */,
 				7F8781672C5F66E500B12A36 /* test_listenMode_empty.iphone13PRO_light.png in Resources */,
 				7F87815C2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png in Resources */,

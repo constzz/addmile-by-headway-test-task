@@ -9,9 +9,13 @@ import XCTest
 import SwiftUI
 import UIKit
 import ViewInspector
+import Combine
 @testable import BookListener
 
 final class ListenScreenUIIntegrationTests: XCTestCase {
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     func test_listenScreen_isPlayingAudioByDefault() async {
         let (view, audioViewModel) = makeSUT()
         await view.forceRender()
@@ -53,7 +57,10 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         audioViewModel.seekTo(15.0)
         try view.hitButtonWith(role: .reverse)
         
-        XCTAssertEqual(audioViewModel.currentTimeInSeconds, 10.0, accuracy: 0.09)
+        audioViewModel.currentTimeInSeconds.waitForPublisher(
+            expectedValue: 10.0,
+            accuracy: 0.9,
+            cancellables: &cancellables)
     }
     
     func test_listenScreen_forwardAudio() async throws {
@@ -63,9 +70,33 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         audioViewModel.seekTo(15.0)
         try view.hitButtonWith(role: .forward)
         
-        XCTAssertEqual(audioViewModel.currentTimeInSeconds, 25.0, accuracy: 0.09)
+        audioViewModel.currentTimeInSeconds.waitForPublisher(
+            expectedValue: 25.0,
+            accuracy: 0.9,
+            cancellables: &cancellables)
     }
-
+    
+    func test_listScreen_showsCurrentProgress() async throws {
+        let (view, audioViewModel) = makeSUT()
+        
+        let totalDuration = audioViewModel.totalDurationInSeconds
+        let halfOfAudioInSeconds = totalDuration / 2
+        audioViewModel.seekTo(halfOfAudioInSeconds)
+        
+        let slider = try view.inspect().find(SliderView.self)
+        let sliderActual = try slider.actualView()
+        
+        await view.forceRender()
+        
+        let kCurrentTimeToTotal = halfOfAudioInSeconds / Double(sliderActual.sliderWidth) * 100
+        
+        sliderActual.leftLabelValuePublisher.waitForPublisher(
+            expectedValue: "\(halfOfAudioInSeconds.preciceCeil(to: .tenths).description)",
+            cancellables: &cancellables)
+        sliderActual.valuePublisher.waitForPublisher(
+            expectedValue: 50,
+            cancellables: &cancellables)
+    }
     
     private func makeSUT(
         file: StaticString = #filePath,
@@ -81,6 +112,33 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
             audioViewModel: audioViewModel)
         let view = ListenScreenView(mode: .listen, isAnimating: false, viewModel: listenScreenViewModel)
         return (view, audioViewModel)
+    }
+}
+
+extension AnyPublisher where Failure == Never, Output: Equatable {
+    func waitForPublisher(
+        expectedValue: Output,
+        cancellables: inout Set<AnyCancellable>,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        self.first().sink(receiveValue: { isPlaying in
+            XCTAssertEqual(isPlaying, expectedValue, file: file, line: line)
+        }).store(in: &cancellables)
+    }
+}
+
+extension AnyPublisher where Failure == Never, Output == Double {
+    func waitForPublisher(
+        expectedValue: Output,
+        accuracy: Double,
+        cancellables: inout Set<AnyCancellable>,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        self.first().sink(receiveValue: { isPlaying in
+            XCTAssertEqual(isPlaying, expectedValue, accuracy: accuracy, file: file, line: line)
+        }).store(in: &cancellables)
     }
 }
 

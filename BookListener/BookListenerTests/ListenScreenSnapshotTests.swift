@@ -17,7 +17,7 @@ final class ListenScreenSnapshotTests: XCTestCase {
     
     func test_ReadMode_empty() {
         let sut = makeSUT(mode: .read)
-        assertImageSnapshot(ofView: makeSUT(mode: .read), name: .iphone13PRO, config: .iPhone13Pro)
+        assertImageSnapshot(ofView: sut, name: .iphone13PRO, config: .iPhone13Pro)
     }
     
     private func makeSUT(mode: ListenScreenMode) -> ListenScreenView {
@@ -26,11 +26,22 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    
+    var progressPublisher: AnyPublisher<Double, Never> {
+        CurrentValueSubject(0.0).eraseToAnyPublisher()
+    }
+    
+    var currentTimePublisher: AnyPublisher<String, Never> {
+        CurrentValueSubject("0.0").eraseToAnyPublisher()
+    }
+    
+    var currentDurationInSeconds: AnyPublisher<Double, Never> { CurrentValueSubject(0.0).eraseToAnyPublisher() }
+    
+    var totalDuration: Double { 0.0 }
+    
     var isPlaying: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
     
     var currentChapter: BookListener.Chapter?
-    
-    var currentDurationInSeconds: Double = 0.0
     
     func reverse() {
     }

@@ -6,9 +6,12 @@
 //
 
 import XCTest
+import Combine
 @testable import BookListener
 
 final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
+    
+    private var cancellables = Set<AnyCancellable>()
     
     func test_playStartsPlayingAudioPlayer() async throws {
         let sut = makeSUT()
@@ -34,7 +37,7 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
     func test_currentTimeByDefaultIsZero() {
         let sut = makeSUT()
         
-        XCTAssertEqual(sut.currentTimeInSeconds, 0.0)
+        sut.currentTimeInSeconds.waitForPublisher(expectedValue: 0.0, cancellables: &cancellables)
     }
     
     func test_seekToChangesCurrentTime() {
@@ -42,7 +45,7 @@ final class AudioViewModelAVFoundationIntegrationTests: XCTestCase {
         
         sut.seekTo(3.0)
         
-        XCTAssertEqual(sut.currentTimeInSeconds, 3.0)
+        sut.currentTimeInSeconds.waitForPublisher(expectedValue: 3.0, cancellables: &cancellables)
     }
     
     func test_defaultSpeedIsOne() {

@@ -13,14 +13,18 @@ public struct SliderView: View {
     @State private var offset: CGFloat = 0
     @State private var isDragging: Bool = false
 
-    @Binding private var value: Double
+    let valuePublisher: AnyPublisher<Double, Never>
+    @State private var value: Double = 0.0
+    
+    let leftLabelValuePublisher: AnyPublisher<String, Never>
+    @State private var leftLabelValue: String = "0.0"
+    
 
     private let title: String?
     private let systemImage: String
-    private let sliderWidth: CGFloat
+    let sliderWidth: CGFloat
     private let sliderHeight: CGFloat
     private let sliderColor: Color
-    @Binding private var leftLabelValue: String
     @Binding private var rightLabelValue: String
     private let onChange: ((Double) -> Void)?
     private let onChangeEnd: ((Double) -> Void)?
@@ -31,8 +35,8 @@ public struct SliderView: View {
         sliderWidth: CGFloat = 250,
         sliderHeight: CGFloat = 10,
         sliderColor: Color? = nil,
-        value: Binding<Double>,
-        leftLabelValue: Binding<String>,
+        valuePublisher: AnyPublisher<Double, Never>,
+        leftLabelValuePublisher: AnyPublisher<String, Never>,
         rightLabelValue: Binding<String>,
         onChange: ((Double) -> Void)? = nil,
         onChangeEnd: ((Double) -> Void)? = nil
@@ -42,8 +46,8 @@ public struct SliderView: View {
         self.sliderWidth = sliderWidth
         self.sliderHeight = sliderHeight
         self.sliderColor = sliderColor ?? .accentBlue
-        self._value = value
-        self._leftLabelValue = leftLabelValue
+        self.valuePublisher = valuePublisher
+        self.leftLabelValuePublisher = leftLabelValuePublisher
         self._rightLabelValue = rightLabelValue
         self.onChange = onChange
         self.onChangeEnd = onChangeEnd
@@ -91,6 +95,12 @@ public struct SliderView: View {
                 .fixedSize(horizontal: true, vertical: false)
         }.onAppear {
             onChange?(value)
+        }
+        .onReceive(valuePublisher) { value in
+            self.value = value
+        }
+        .onReceive(leftLabelValuePublisher) { value in
+            self.leftLabelValue = value
         }
     }
 

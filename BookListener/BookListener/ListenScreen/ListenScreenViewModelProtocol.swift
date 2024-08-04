@@ -10,7 +10,10 @@ import Combine
 protocol ListenScreenViewModelProtocol {
     var isPlaying: AnyPublisher<Bool, Never> { get }
     var currentChapter: Chapter? { get }
-    var currentDurationInSeconds: Double { get }
+    var currentDurationInSeconds: AnyPublisher<Double, Never> { get }
+    var progressPublisher: AnyPublisher<Double, Never> { get }
+    var currentTimePublisher: AnyPublisher<String, Never> { get}
+    var totalDuration: Double { get }
     func togglePlayPause()
     func reverse()
     func forward()

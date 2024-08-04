@@ -33,19 +33,19 @@ final class ListenScreenViewModelTests: XCTestCase {
     
     func test_initialDurationIsZeroByDefault() {
         let sut = makeSUT()
-        XCTAssertEqual(sut.currentDurationInSeconds, 0.0)
+        sut.currentDurationInSeconds.waitForPublisher(expectedValue: 0.0, cancellables: &cancellables)
     }
     
     func test_reverse_reversesDuration5SecondsBack() {
         let sut = makeSUT(currentDurationInSeconds: 20.0)
         sut.reverse()
-        XCTAssertEqual(sut.currentDurationInSeconds, 15.0)
+        sut.currentDurationInSeconds.waitForPublisher(expectedValue: 15.0, cancellables: &cancellables)
     }
     
     func test_forward_forwardsDuration5SecondsBack() {
         let sut = makeSUT(currentDurationInSeconds: 11.0)
         sut.forward()
-        XCTAssertEqual(sut.currentDurationInSeconds, 21.0)
+        sut.currentDurationInSeconds.waitForPublisher(expectedValue: 21.0, cancellables: &cancellables)
     }
     
     func test_initialChapterIsFirstFromTheList() {

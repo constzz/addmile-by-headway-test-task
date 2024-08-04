@@ -6,12 +6,18 @@
 //
 
 import Combine
+import Foundation
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
-    private(set) var currentDurationInSeconds: Double {
-        get { audioViewModel.currentTimeInSeconds }
-        set { audioViewModel.seekTo(newValue) }
+    
+    var totalDuration: Double {
+        audioViewModel.totalDurationInSeconds
     }
+    
+    var currentDurationInSeconds: AnyPublisher<Double, Never> {
+        audioViewModel.currentTimeInSeconds
+    }
+
     var isPlaying: AnyPublisher<Bool, Never> {
         isPlayingSubject.eraseToAnyPublisher()
     }
@@ -19,6 +25,30 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     private(set) var currentChapter: Chapter?
     private let chapters: [Chapter]
     private let audioViewModel: AudioViewModelProtocol
+    
+    var progressPublisher: AnyPublisher<Double, Never> {
+        currentDurationInSeconds
+            .map { [totalDuration] duration in
+                return duration / totalDuration * 100
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    var currentTimePublisher: AnyPublisher<String, Never> {
+        currentDurationInSeconds
+            .map { [dateComponentsFormatter] in
+                return dateComponentsFormatter.string(from: $0) ?? ""
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private let dateComponentsFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+
     
     private enum Constants {
         static let reverseDurationAmountInSeconds = 5.0
@@ -38,7 +68,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self.currentChapter = chapters.first
         }
         self.audioViewModel = audioViewModel
-        self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
+        self.audioViewModel.seekTo(currentDurationInSeconds ?? 0.0)
     }
     
     func togglePlayPause() {
@@ -47,11 +77,11 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     func forward() {
-        self.currentDurationInSeconds += Constants.forwardDurationAmountInSeconds
+        audioViewModel.forward(seconds: Constants.forwardDurationAmountInSeconds)
     }
     
     func reverse() {
-        self.currentDurationInSeconds -= Constants.reverseDurationAmountInSeconds
+        audioViewModel.reverse(seconds: Constants.reverseDurationAmountInSeconds)
     }
     
     func previous() {
