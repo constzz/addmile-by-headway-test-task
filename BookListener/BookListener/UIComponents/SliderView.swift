@@ -10,8 +10,6 @@ import Combine
 
 public struct SliderView: View {
         
-    @Environment(\.colorScheme) private var colorScheme
-
     @State private var offset: CGFloat = 0
     @State private var isDragging: Bool = false
 
@@ -78,7 +76,6 @@ public struct SliderView: View {
                     sliderHeight: sliderHeight,
                     sliderColor: sliderColor,
                     systemImage: systemImage,
-                    colorScheme: colorScheme,
                     onChange: updateValue,
                     onChangeEnd: { onChangeEnd?(value) }
                 )
@@ -116,7 +113,6 @@ private struct SliderViewBase: View {
     let sliderHeight: CGFloat
     let sliderColor: Color
     let systemImage: String
-    let colorScheme: ColorScheme
     let onChange: () -> Void
     let onChangeEnd: () -> Void
 

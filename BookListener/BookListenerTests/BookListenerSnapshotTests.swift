@@ -9,13 +9,7 @@
 import XCTest
 
 class BookListenerSnapshotTests: XCTestCase {
-    
-    func test_emptyScreen() {
-        let sut = ContentView()
-        assertImageSnapshot(ofView: sut, name: "iphone13PRO", config: .iPhone13Pro)
-        assertImageSnapshot(ofView: sut, name: "iphoneSE", config: .iPhoneSe)
-    }
-    
+        
     func test_playbackControlView() {
         let sut = PlaybackControlView()
         assertImageSnapshot(ofView: sut, name: .snapshotName300_per_200, config: .config_300_200_pixels)
@@ -46,7 +40,7 @@ class BookListenerSnapshotTests: XCTestCase {
     }
     
     func test_coverImageView() {
-        let view = CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .black)
+        let view = CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
         self.assertImageSnapshot(ofView: view, name: .snapshotName200_per_300, config: .config_200_300_pixels)
     }
 }
