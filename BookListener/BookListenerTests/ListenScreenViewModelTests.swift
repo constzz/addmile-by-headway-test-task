@@ -43,8 +43,8 @@ final class AudioViewModel: AudioViewModelProtocol {
     ) {
         self.currentDurationInSeconds = currentDurationInSeconds ?? 0.0
         self.chapters = chapters
-        if let defaultChapterIndex {
-            self.currentChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex)
+        if let defaultChapterIndex, let firstChapter = chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
+            self.currentChapter = firstChapter
         } else {
             self.currentChapter = chapters.first
         }
@@ -176,6 +176,19 @@ final class ListenScreenViewModelTests: XCTestCase {
             ifCurrentIndexIs: currentIndex,
             chatpers: chapters,
             afterAction: { sut in sut.next() }
+        )
+    }
+    
+    func test_currentChapterIsFirst_ifCurrentIndexisNotIndexOfArray() {
+        let chapters = createRandomChapters()
+        let currentIndex = 999
+        let expectedChapterToOpen = chapters.first
+
+        assertCurrentChapterOfAudioViewModel(
+            is: expectedChapterToOpen,
+            ifCurrentIndexIs: currentIndex,
+            chatpers: chapters,
+            afterAction: { _ in }
         )
     }
     
