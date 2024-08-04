@@ -54,6 +54,14 @@ extension String {
     static var snapshotName200_per_300: String {
         "200_300_pixels"
     }
+    
+    static var iphone13PRO: String {
+        "iphone13PRO"
+    }
+    
+    static var iphoneSE: String {
+        "iphoneSE"
+    }
 }
 
 extension ViewImageConfig {
