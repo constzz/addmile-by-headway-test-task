@@ -50,6 +50,10 @@ extension String {
     static var snapshotName400_per_200: String {
         "400_200_pixels"
     }
+    
+    static var snapshotName200_per_300: String {
+        "200_300_pixels"
+    }
 }
 
 extension ViewImageConfig {
@@ -59,6 +63,10 @@ extension ViewImageConfig {
     
     static var config_400_200_pixels: Self {
         return .init(size: .init(width: 400, height: 200))
+    }
+    
+    static var config_200_300_pixels: Self {
+        return .init(size: .init(width: 200, height: 300))
     }
     
     mutating func withUserInterfaceStyle(_ style: UIUserInterfaceStyle) -> Self {
