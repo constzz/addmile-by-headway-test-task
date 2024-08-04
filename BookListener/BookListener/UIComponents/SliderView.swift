@@ -19,13 +19,14 @@ public struct SliderView: View {
     let leftLabelValuePublisher: AnyPublisher<String, Never>
     @State private var leftLabelValue: String = "0.0"
     
-
+    let rightLabelValuePublisher: AnyPublisher<String, Never>
+    @State private var rightLabelValue: String = "0.0"
+    
     private let title: String?
     private let systemImage: String
     let sliderWidth: CGFloat
     private let sliderHeight: CGFloat
     private let sliderColor: Color
-    @Binding private var rightLabelValue: String
     private let onChange: ((Double) -> Void)?
     private let onChangeEnd: ((Double) -> Void)?
 
@@ -37,7 +38,7 @@ public struct SliderView: View {
         sliderColor: Color? = nil,
         valuePublisher: AnyPublisher<Double, Never>,
         leftLabelValuePublisher: AnyPublisher<String, Never>,
-        rightLabelValue: Binding<String>,
+        rightLabelValuePublisher: AnyPublisher<String, Never>,
         onChange: ((Double) -> Void)? = nil,
         onChangeEnd: ((Double) -> Void)? = nil
     ) {
@@ -48,7 +49,7 @@ public struct SliderView: View {
         self.sliderColor = sliderColor ?? .accentBlue
         self.valuePublisher = valuePublisher
         self.leftLabelValuePublisher = leftLabelValuePublisher
-        self._rightLabelValue = rightLabelValue
+        self.rightLabelValuePublisher = rightLabelValuePublisher
         self.onChange = onChange
         self.onChangeEnd = onChangeEnd
     }
@@ -100,7 +101,10 @@ public struct SliderView: View {
             self.value = value
         }
         .onReceive(leftLabelValuePublisher) { value in
-            self.leftLabelValue = value
+            leftLabelValue = value
+        }
+        .onReceive(rightLabelValuePublisher) { value in
+            rightLabelValue = value
         }
     }
 

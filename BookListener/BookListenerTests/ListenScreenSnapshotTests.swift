@@ -26,18 +26,21 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var durationTimePublisher: AnyPublisher<String, Never> {
+        CurrentValueSubject("1:14").eraseToAnyPublisher()
+    }
     
     var progressPublisher: AnyPublisher<Double, Never> {
         CurrentValueSubject(0.0).eraseToAnyPublisher()
     }
     
     var currentTimePublisher: AnyPublisher<String, Never> {
-        CurrentValueSubject("0.0").eraseToAnyPublisher()
+        CurrentValueSubject("00:00").eraseToAnyPublisher()
     }
     
     var currentDurationInSeconds: AnyPublisher<Double, Never> { CurrentValueSubject(0.0).eraseToAnyPublisher() }
     
-    var totalDuration: Double { 0.0 }
+    var totalDuration: Double { 74.0 }
     
     var isPlaying: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
     

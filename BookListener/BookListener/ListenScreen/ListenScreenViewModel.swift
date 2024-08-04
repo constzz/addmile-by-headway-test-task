@@ -42,6 +42,11 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             .eraseToAnyPublisher()
     }
     
+    var durationTimePublisher: AnyPublisher<String, Never> {
+        CurrentValueSubject(dateComponentsFormatter.string(from: totalDuration) ?? "")
+            .eraseToAnyPublisher()
+    }
+    
     private let dateComponentsFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]

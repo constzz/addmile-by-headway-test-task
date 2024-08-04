@@ -14,9 +14,7 @@ struct ListenScreenView: View {
     @State private var isAnimating: Bool
     @State private var isPlaying: Bool = false
     private let viewModel: ListenScreenViewModelProtocol
-    
-    @State private var currentDurationString: String = ""
-    
+        
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
     init(mode: ListenScreenMode, isAnimating: Bool, viewModel: ListenScreenViewModelProtocol) {
@@ -34,7 +32,7 @@ struct ListenScreenView: View {
                 SliderView(
                     valuePublisher: viewModel.progressPublisher,
                     leftLabelValuePublisher: viewModel.currentTimePublisher,
-                    rightLabelValue: .constant("0.0"))
+                    rightLabelValuePublisher: viewModel.durationTimePublisher)
                 PlaybackControlView(state: .init(
                     previousAction: {},
                     reverseAction: { viewModel.reverse() },

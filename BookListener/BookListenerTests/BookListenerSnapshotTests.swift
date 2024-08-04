@@ -20,7 +20,7 @@ class BookListenerSnapshotTests: XCTestCase {
         let sut = SliderView(
             valuePublisher: CurrentValueSubject(0.0).eraseToAnyPublisher(),
             leftLabelValuePublisher: CurrentValueSubject("0.0").eraseToAnyPublisher(),
-            rightLabelValue: .constant("100"))
+            rightLabelValuePublisher: CurrentValueSubject("74.0").eraseToAnyPublisher())
         assertImageSnapshot(ofView: sut, name: .snapshotName400_per_200, config: .config_400_200_pixels)
     }
     

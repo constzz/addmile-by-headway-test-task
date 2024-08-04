@@ -87,15 +87,17 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         let sliderActual = try slider.actualView()
         
         await view.forceRender()
-        
-        let kCurrentTimeToTotal = halfOfAudioInSeconds / Double(sliderActual.sliderWidth) * 100
-        
+                
         sliderActual.leftLabelValuePublisher.waitForPublisher(
-            expectedValue: "\(halfOfAudioInSeconds.preciceCeil(to: .tenths).description)",
+            expectedValue: "00:27",
             cancellables: &cancellables)
         sliderActual.valuePublisher.waitForPublisher(
             expectedValue: 50,
             cancellables: &cancellables)
+        sliderActual.rightLabelValuePublisher.waitForPublisher(
+            expectedValue: "00:54",
+            cancellables: &cancellables)
+
     }
     
     private func makeSUT(

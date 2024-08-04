@@ -12,7 +12,8 @@ protocol ListenScreenViewModelProtocol {
     var currentChapter: Chapter? { get }
     var currentDurationInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
-    var currentTimePublisher: AnyPublisher<String, Never> { get}
+    var currentTimePublisher: AnyPublisher<String, Never> { get }
+    var durationTimePublisher: AnyPublisher<String, Never> { get }
     var totalDuration: Double { get }
     func togglePlayPause()
     func reverse()
