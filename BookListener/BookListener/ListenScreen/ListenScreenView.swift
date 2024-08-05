@@ -18,6 +18,8 @@ struct ListenScreenView: View {
     private let subj = CurrentValueSubject<Void, Never>(())
     @State private var isAnimating: Bool
     @State private var mode: ListenScreenMode = .listen
+    @State private var showAlert = false
+    @State private var errorMessage: String?
     private let viewModel: ListenScreenViewModelProtocol
     private let subtitleSubject = PassthroughSubject<String, Never>()
     private let mainTitleSubject = PassthroughSubject<String, Never>()
@@ -84,12 +86,23 @@ struct ListenScreenView: View {
             }
         }
         .onReceive(viewModel.currentChapterPublisher) { chapter in
-            guard let chapter else { return print("Failed to load ") }
-            subtitleSubject.send("\(chapter.index + 1) of \(viewModel.chaptersCount)")
+            guard let chapter else {
+                errorMessage = R.string.localizable.unableToLoadChapter()
+                showAlert = true
+                return
+            }
+            subtitleSubject.send(R.string.localizable.chapterSubtitle(chapter.index + 1, viewModel.chaptersCount))
             mainTitleSubject.send(chapter.title)
         }
         .onReceive(viewModel.mode) { mode in
             self.mode = mode
         }
+        .alert(isPresented: $showAlert) {
+           Alert(
+                title: Text(R.string.localizable.error),
+                message: Text(errorMessage ?? R.string.localizable.unknownError()),
+               dismissButton: .default(Text(R.string.localizable.ok))
+           )
+       }
     }
 }

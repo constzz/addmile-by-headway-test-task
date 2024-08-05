@@ -26,7 +26,7 @@ struct SpeedChangeView: View {
         Button(action: {
             changePlaybackSpeed.send()
         }) {
-            Text("Speed x\(speedValueFormatted)")
+            Text(R.string.localizable.speed(speedValueFormatted))
                 .font(.system(size: 13, weight: .medium, design: .default))
                 .animation(nil)
         }
