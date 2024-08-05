@@ -1,7 +1,7 @@
 # AddMile by Headway Test Task. Book Listener. Using SwiftUI, MVVM, TDD
 
-### Path (4 hours)
-1. **Project setup** Create github repo, add gitignore, ReadMe file. Add colors, AppIcon, make project use SwiftUI. 
+### Path
+1. **Project setup (4 hours)** Create github repo, add gitignore, ReadMe file. Add colors, AppIcon, make project use SwiftUI. 
 
 2. **Listen screen UI (8 hours)** Create UIComponents, develop screens using them. Snapshot testing each component та screen, in light and dark mode. Now we do not miss any UI change.
 
