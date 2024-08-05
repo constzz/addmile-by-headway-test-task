@@ -29,7 +29,7 @@ struct ListenScreenView: View {
         VStack {
             switch mode {
             case .listen:
-                CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
+                CoverImageView(coverImage: viewModel.bookCover, foregroundColor: .dark)
                 ChapterInfoView(
                     subtitlePublisher: subtitleSubject.eraseToAnyPublisher(),
                     mainTitlePublisher: mainTitleSubject.eraseToAnyPublisher())
@@ -51,10 +51,14 @@ struct ListenScreenView: View {
                     changeSubject: sliderChangeSubject,
                     onChangeEnd: { finalSliderChange in
                         isEditingCurrentTime = false
-                        viewModel.seekTo(finalSliderChange / 100 * viewModel.totalDuration)
+                        let newValueInSeconds = finalSliderChange / 100 * viewModel.totalDuration
+                        viewModel.seekTo(newValueInSeconds)
                         if wasPlayingBeforeSliderChange && !viewModel.isPlayingNonUpdatingValue {
                             viewModel.togglePlayPause()
                             wasPlayingBeforeSliderChange = false
+                        }
+                        if newValueInSeconds == viewModel.totalDuration {
+                            viewModel.next()
                         }
                     })
                 PlaybackControlView(state: .init(

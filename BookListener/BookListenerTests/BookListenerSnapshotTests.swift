@@ -47,7 +47,7 @@ class BookListenerSnapshotTests: XCTestCase {
     }
     
     func test_coverImageView() {
-        let view = CoverImageView(coverImage: .init(systemName: "book"), foregroundColor: .dark)
+        let view = CoverImageView(coverImage: nil, foregroundColor: .dark)
         self.assertImageSnapshot(ofView: view, name: .snapshotName200_per_300, config: .config_200_300_pixels)
     }
 }

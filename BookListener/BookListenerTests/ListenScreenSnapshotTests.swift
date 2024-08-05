@@ -26,6 +26,8 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var bookCover: URL?
+    
     var currentChapterPublisher: AnyPublisher<BookListener.Chapter?, Never> {
         CurrentValueSubject(.init(index: 1, title: "title", url: nil)).eraseToAnyPublisher()
     }
@@ -55,7 +57,7 @@ final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
         CurrentValueSubject("00:00").eraseToAnyPublisher()
     }
     
-    var currentDurationInSeconds: AnyPublisher<Double, Never> { CurrentValueSubject(0.0).eraseToAnyPublisher() }
+    var currentTimeInSeconds: AnyPublisher<Double, Never> { CurrentValueSubject(0.0).eraseToAnyPublisher() }
     
     var totalDuration: Double { 74.0 }
     

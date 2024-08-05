@@ -50,7 +50,7 @@ final class AudioViewModel: NSObject, AudioViewModelProtocol {
         self.player = try .init(contentsOf: url)
         self.player.delegate = self
         
-        currentTimeInSecondsSubject.send(player.currentTime)
+        currentTimeInSecondsSubject.send(0.0)
         totalDurationInSecondsSubject.send(player.duration)
         setupTimer()
     }

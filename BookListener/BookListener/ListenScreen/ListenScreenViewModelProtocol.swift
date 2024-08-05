@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 protocol ListenScreenViewModelProtocol {
     var isPlaying: AnyPublisher<Bool, Never> { get }
@@ -14,8 +15,9 @@ protocol ListenScreenViewModelProtocol {
     var currentChapter: Chapter? { get }
     var currentChapterPublisher: AnyPublisher<Chapter?, Never> { get }
     var chaptersCount: Int { get }
+    var bookCover: URL? { get }
     
-    var currentDurationInSeconds: AnyPublisher<Double, Never> { get }
+    var currentTimeInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
     var currentTimePublisher: AnyPublisher<String, Never> { get }
     var durationTimePublisher: AnyPublisher<String, Never> { get }

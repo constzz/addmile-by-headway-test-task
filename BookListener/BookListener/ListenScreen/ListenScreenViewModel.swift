@@ -14,7 +14,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         audioViewModel.totalDurationInSeconds
     }
     
-    var currentDurationInSeconds: AnyPublisher<Double, Never> {
+    var currentTimeInSeconds: AnyPublisher<Double, Never> {
         audioViewModel.currentTimeInSeconds
     }
 
@@ -39,19 +39,21 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         book.chapters.count
     }
     
-    private let book: Book
-    private var audioViewModel: AudioViewModelProtocol
-    
+    var bookCover: URL? {
+        book.coverURL
+    }
+        
     var progressPublisher: AnyPublisher<Double, Never> {
-        currentDurationInSeconds
-            .map { [totalDuration] duration in
-                return duration / totalDuration * 100
+        currentTimeInSeconds
+            .combineLatest(audioViewModel.totalDurationInSecondsPublisher)
+            .map { currentTimeInSeconds, duration in
+                return currentTimeInSeconds / duration * 100
             }
             .eraseToAnyPublisher()
     }
     
     var currentTimePublisher: AnyPublisher<String, Never> {
-        currentDurationInSeconds
+        currentTimeInSeconds
             .map { [dateComponentsFormatter] in
                 return dateComponentsFormatter.string(from: $0) ?? ""
             }
@@ -78,6 +80,9 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         static let reverseDurationAmountInSeconds = 5.0
         static let forwardDurationAmountInSeconds = 10.0
     }
+    
+    private let book: Book
+    private var audioViewModel: AudioViewModelProtocol
     
     init(
         book: Book,
