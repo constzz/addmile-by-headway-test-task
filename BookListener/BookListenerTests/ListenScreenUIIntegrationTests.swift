@@ -100,6 +100,16 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
 
     }
     
+    func test_opensNewChapterOnFinish() async {
+        let (_, audioViewModel, listenScreenVM) = makeSUT()
+        
+        XCTAssertEqual(listenScreenVM.currentChapter?.index, 0)
+        
+        audioViewModel.onFinishPlaying?()
+        
+        XCTAssertEqual(listenScreenVM.currentChapter?.index, 1)
+    }
+    
     
     private func makeSUT(
         file: StaticString = #filePath,
@@ -107,6 +117,18 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
     ) -> (
         view: some View,
         audioViewModel: AudioViewModelProtocol
+    ) {
+        let (view, audioViewModel, _) = makeSUT(file: file, line: line)
+        return (view, audioViewModel)
+    }
+    
+    private func makeSUT(
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (
+        view: some View,
+        audioViewModel: AudioViewModelProtocol,
+        listenScreenViewModel: ListenScreenViewModel
     ) {
         let audioViewModel = AudioViewModel()
         try! audioViewModel.set(url: Mock.thinkAndGrowRich0File!)
@@ -118,7 +140,7 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
             mode: .listen,
             isAnimating: false,
             viewModel: listenScreenViewModel)
-        return (view, audioViewModel)
+        return (view, audioViewModel, listenScreenViewModel)
     }
 }
 

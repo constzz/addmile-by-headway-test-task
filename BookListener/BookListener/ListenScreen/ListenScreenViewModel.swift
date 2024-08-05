@@ -40,7 +40,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     private let book: Book
-    private let audioViewModel: AudioViewModelProtocol
+    private var audioViewModel: AudioViewModelProtocol
     
     var progressPublisher: AnyPublisher<Double, Never> {
         currentDurationInSeconds
@@ -59,7 +59,10 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
     
     var durationTimePublisher: AnyPublisher<String, Never> {
-        CurrentValueSubject(dateComponentsFormatter.string(from: totalDuration) ?? "")
+        audioViewModel.totalDurationInSecondsPublisher
+            .map { [dateComponentsFormatter] in
+                return dateComponentsFormatter.string(from: $0) ?? ""
+            }
             .eraseToAnyPublisher()
     }
     
@@ -88,6 +91,9 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self.currentChapter = book.chapters.first
         }
         self.audioViewModel = audioViewModel
+        self.audioViewModel.onFinishPlaying = { [weak self] in
+            self?.next()
+        }
         onCurrentChapterUpdate(chapter: self.currentChapter)
     }
     
@@ -130,6 +136,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         currentChapterSubject.send(currentChapter)
         if let url = currentChapter?.url {
             try? audioViewModel.set(url: url)
+            audioViewModel.play()
         } else {
             audioViewModel.pause()
         }

@@ -9,8 +9,8 @@ import Foundation
 import AVKit
 import Combine
 
-final class AudioViewModel: AudioViewModelProtocol {
-    
+final class AudioViewModel: NSObject, AudioViewModelProtocol {
+        
     var player: AVAudioPlayer = .init()
     
     var currentTimeInSeconds: AnyPublisher<Double, Never> {
@@ -20,8 +20,14 @@ final class AudioViewModel: AudioViewModelProtocol {
     private lazy var currentTimeInSecondsSubject: CurrentValueSubject<Double, Never> = .init(0.0)
     
     var totalDurationInSeconds: Double {
-        player.duration
+        totalDurationInSecondsSubject.value
     }
+    
+    var totalDurationInSecondsPublisher: AnyPublisher<Double, Never> {
+        totalDurationInSecondsSubject.eraseToAnyPublisher()
+    }
+    
+    private var totalDurationInSecondsSubject: CurrentValueSubject<Double, Never> = .init(0.0)
     
     private(set) lazy var isPlaying: Bool = player.isPlaying
     
@@ -32,20 +38,21 @@ final class AudioViewModel: AudioViewModelProtocol {
         set { player.rate = newValue }
     }
     
+    var onFinishPlaying: (() -> Void)?
+    
     private var timer: Timer?
     
-    init() {
-        player.delegate = AudioDelegate(didFinishPlaying: { bool in
-            print("did finish playing")
-        }, decodeErrorDidOccur: { error in
-            print("error occured")
-        })
-        currentTimeInSecondsSubject.send(player.currentTime)
-        setupTimer()
+    override init() {
+        super.init()
     }
     
     func set(url: URL) throws {
         self.player = try .init(contentsOf: url)
+        self.player.delegate = self
+        
+        currentTimeInSecondsSubject.send(player.currentTime)
+        totalDurationInSecondsSubject.send(player.duration)
+        setupTimer()
     }
     
     func play() {
@@ -86,30 +93,19 @@ private extension AudioViewModel {
 
     @objc private func playerTimerAction() {
         currentTimeInSecondsSubject.send(player.currentTime.preciceCeil(to: .hundredths))
+        totalDurationInSecondsSubject.send(player.duration.preciceCeil(to: .hundredths))
     }
 
 }
 
-private final class AudioDelegate: NSObject, AVAudioPlayerDelegate {
-    private let didFinishPlaying: (Bool) -> Void
-    private let decodeErrorDidOccur: (Error?) -> Void
-    
-    init(
-        didFinishPlaying: @escaping (Bool) -> Void,
-        decodeErrorDidOccur: @escaping (Error?) -> Void
-    ) {
-        self.didFinishPlaying = didFinishPlaying
-        self.decodeErrorDidOccur = decodeErrorDidOccur
-    }
-    
+extension AudioViewModel: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        self.didFinishPlaying(flag)
+        guard flag else {
+            return
+        }
+        self.onFinishPlaying?()
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        self.decodeErrorDidOccur(error)
     }
 }
-
-
-
