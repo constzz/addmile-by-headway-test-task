@@ -6,16 +6,102 @@
 //
 
 import XCTest
+import Combine
 @testable import BookListener
 
 final class ListenScreenSnapshotTests: XCTestCase {
     func test_listenMode_empty() {
-        let sut = ListenScreenView(mode: .listen, isAnimating: false)
+        let sut = makeSUT(mode: .listen)
         assertImageSnapshot(ofView: sut, name: .iphone13PRO, config: .iPhone13Pro)
     }
     
     func test_ReadMode_empty() {
-        let sut = ListenScreenView(mode: .read, isAnimating: false)
+        let sut = makeSUT(mode: .read)
         assertImageSnapshot(ofView: sut, name: .iphone13PRO, config: .iPhone13Pro)
+    }
+    
+    private func makeSUT(mode: ListenScreenMode) -> ListenScreenView {
+        return ListenScreenView(isAnimating: false, viewModel: ListenScreenViewModelStub(mode: .init(mode)))
+    }
+}
+
+final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var mode: CurrentValueSubject<BookListener.ListenScreenMode, Never>
+    
+    lazy var currentTimeInSecondsString: AnyPublisher<String, Never> = currentTimePublisher
+    
+    var sliderChangeSubject: PassthroughSubject<Double, Never> = .init()
+    
+    var isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+    
+    func onChangeEnd(finalSliderChange: Double) {
+    }
+    
+    init(mode: CurrentValueSubject<BookListener.ListenScreenMode, Never>) {
+        self.mode = mode
+    }
+    
+    var currentSpeedPublisher: AnyPublisher<Double, Never> {
+        CurrentValueSubject<Double, Never>(0.0).eraseToAnyPublisher()
+    }
+    
+    var changePlaybackSpeedSubject: PassthroughSubject<Void, Never> = .init()
+    
+    var isPreviousActivePublisher: AnyPublisher<Bool, Never> { CurrentValueSubject(false).eraseToAnyPublisher()  }
+    
+    var isNextActivePublisher: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
+    
+    var bookCover: URL?
+    
+    var currentChapterPublisher: AnyPublisher<BookListener.Chapter?, Never> {
+        CurrentValueSubject(.init(index: 1, title: "title", url: nil)).eraseToAnyPublisher()
+    }
+    
+    var chaptersCount: Int {
+        4
+    }
+    
+    var isPlayingNonUpdatingValue: Bool = false
+    
+    func convertProgresToCurrentTime(progress: Double) -> String {
+        return ""
+    }
+    
+    func seekTo(_ value: Double) {
+    }
+    
+    var durationTimePublisher: AnyPublisher<String, Never> {
+        CurrentValueSubject("1:14").eraseToAnyPublisher()
+    }
+    
+    var progressPublisher: AnyPublisher<Double, Never> {
+        CurrentValueSubject(0.0).eraseToAnyPublisher()
+    }
+    
+    var currentTimePublisher: AnyPublisher<String, Never> {
+        CurrentValueSubject("00:00").eraseToAnyPublisher()
+    }
+    
+    var currentTimeInSeconds: AnyPublisher<Double, Never> { CurrentValueSubject(0.0).eraseToAnyPublisher() }
+    
+    var totalDuration: Double { 74.0 }
+    
+    var isPlaying: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
+    
+    var currentChapter: BookListener.Chapter? = .init(index: 0, title: "1 of 4", url: nil)
+    
+    func reverse() {
+    }
+    
+    func forward() {
+    }
+    
+    func previous() {
+    }
+    
+    func next() {
+    }
+    
+    func togglePlayPause() {
     }
 }

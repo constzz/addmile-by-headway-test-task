@@ -13,7 +13,12 @@ struct BookListenerApp: App {
     var body: some Scene {
         WindowGroup {
             VStack {
-                ListenScreenView(mode: .listen, isAnimating: true)
+                ListenScreenView(
+                    isAnimating: true,
+                    viewModel: ListenScreenViewModel(
+                        book: Mock.mockedThinkAndGrowRichBook,
+                        audioViewModel: AudioViewModel(), 
+                        mode: .listen))
             }
         }
     }
