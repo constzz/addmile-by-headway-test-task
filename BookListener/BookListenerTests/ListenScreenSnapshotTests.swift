@@ -30,6 +30,8 @@ final class ListenScreenSnapshotTests: XCTestCase {
 // MARK: - ListenScreenViewModelStub
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    
+    var errorPublisher: AnyPublisher<String, Never> { Empty().eraseToAnyPublisher() }
     var mode: CurrentValueSubject<BookListener.ListenScreenMode, Never>
 
     lazy var currentTimeInSecondsString: AnyPublisher<String, Never> = currentTimePublisher
