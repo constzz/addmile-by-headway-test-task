@@ -16,6 +16,7 @@
 		7F48B3EA2C601FB6006CCB29 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3E92C601FB6006CCB29 /* Book.swift */; };
 		7F48B3EC2C602898006CCB29 /* MockedFileURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */; };
 		7F48B3EE2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */; };
+		7F48B3F02C60AB24006CCB29 /* SpeedChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EF2C60AB24006CCB29 /* SpeedChangeView.swift */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		7F48B3E92C601FB6006CCB29 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFileURLs.swift; sourceTree = "<group>"; };
 		7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = think_and_grow_rich_book_cover.jpg; sourceTree = "<group>"; };
+		7F48B3EF2C60AB24006CCB29 /* SpeedChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedChangeView.swift; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				7F8781312C5E983F00B12A36 /* CoverImageView.swift */,
 				7F8781332C5E987C00B12A36 /* ChapterInfoView.swift */,
 				7F8781352C5EAFC900B12A36 /* ToggleView.swift */,
+				7F48B3EF2C60AB24006CCB29 /* SpeedChangeView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 			files = (
 				7F87818B2C5F99D800B12A36 /* ListenScreenViewModelProtocol.swift in Sources */,
 				7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */,
+				7F48B3F02C60AB24006CCB29 /* SpeedChangeView.swift in Sources */,
 				7F8781892C5F99CE00B12A36 /* ListenScreenViewModel.swift in Sources */,
 				7F8780F82C5E406200B12A36 /* PlaybackControlView.swift in Sources */,
 				7F87812F2C5E95F400B12A36 /* ListenScreenView.swift in Sources */,

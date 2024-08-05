@@ -50,4 +50,12 @@ class BookListenerSnapshotTests: XCTestCase {
         let view = CoverImageView(coverImage: nil, foregroundColor: .dark)
         self.assertImageSnapshot(ofView: view, name: .snapshotName200_per_300, config: .config_200_300_pixels)
     }
+    
+    func test_speedChangeView() {
+        let view = SpeedChangeView(
+            changePlaybackSpeed: PassthroughSubject(),
+            speedValueFormattedPublisher: CurrentValueSubject("0.25").eraseToAnyPublisher()
+        )
+        self.assertImageSnapshot(ofView: view, name: .snapshotName300_per_200, config: .config_300_200_pixels)
+    }
 }
