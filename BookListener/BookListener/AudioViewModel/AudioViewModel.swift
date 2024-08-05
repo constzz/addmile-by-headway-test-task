@@ -40,6 +40,7 @@ final class AudioViewModel: NSObject, AudioViewModelProtocol {
     }
 
     var onFinishPlaying: (() -> Void)?
+    var onError: ((Error?) -> Void)?
 
     private var timer: Timer?
 
@@ -103,8 +104,6 @@ private extension AudioViewModel {
     }
 }
 
-// MARK: AVAudioPlayerDelegate
-
 extension AudioViewModel: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully flag: Bool) {
         guard flag else {
@@ -112,6 +111,8 @@ extension AudioViewModel: AVAudioPlayerDelegate {
         }
         onFinishPlaying?()
     }
-
-    func audioPlayerDecodeErrorDidOccur(_: AVAudioPlayer, error _: Error?) {}
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: (any Error)?) {
+        onError?(error)
+    }
 }

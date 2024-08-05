@@ -9,11 +9,17 @@ import Combine
 import Foundation
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
+    
     var mode: CurrentValueSubject<ListenScreenMode, Never>
 
     var totalDuration: Double {
         audioViewModel.totalDurationInSeconds
     }
+    
+    var errorPublisher: AnyPublisher<String, Never> {
+        errorSubject.eraseToAnyPublisher()
+    }
+    private let errorSubject: PassthroughSubject<String, Never> = .init()
 
     let sliderChangeSubject: PassthroughSubject<Double, Never> = .init()
     let isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> = .init(false)
@@ -127,6 +133,10 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         self.audioViewModel.onFinishPlaying = { [weak self] in
             self?.next()
         }
+        self.audioViewModel.onError = { [weak self] error in
+            self?.errorSubject.send(error?.localizedDescription ?? R.string.localizable.unknownError())
+        }
+
         onCurrentChapterUpdate(chapter: currentChapter)
         changePlaybackSpeedSubject.sink { [weak self] _ in
             guard let self else { return }

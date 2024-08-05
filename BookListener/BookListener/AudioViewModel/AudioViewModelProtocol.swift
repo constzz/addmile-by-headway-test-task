@@ -15,6 +15,7 @@ protocol AudioViewModelProtocol {
     var speed: Float { get set }
     var isPlaying: Bool { get }
     var onFinishPlaying: (() -> Void)? { get set }
+    var onError: ((Error?) -> Void)? { get set }
     func play()
     func pause()
     func seekTo(_ value: Double)

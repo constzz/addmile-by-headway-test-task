@@ -87,13 +87,15 @@ struct ListenScreenView: View {
         }
         .onReceive(viewModel.currentChapterPublisher) { chapter in
             guard let chapter else {
-                errorMessage = R.string.localizable.unableToLoadChapter()
-                showAlert = true
+                showError(R.string.localizable.unableToLoadChapter())
                 return
             }
             subtitleSubject.send(R.string.localizable.chapterSubtitle(chapter.index + 1, viewModel.chaptersCount))
             mainTitleSubject.send(chapter.title)
         }
+        .onReceive(viewModel.errorPublisher, perform: { errorMessage in
+            showError(errorMessage)
+        })
         .onReceive(viewModel.mode) { mode in
             self.mode = mode
         }
@@ -104,5 +106,11 @@ struct ListenScreenView: View {
                dismissButton: .default(Text(R.string.localizable.ok))
            )
        }
+    }
+    
+    private func showError(_ errorMessage: String) {
+        self.errorMessage = errorMessage
+        self.showAlert = true
+
     }
 }
