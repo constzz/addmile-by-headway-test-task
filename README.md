@@ -12,8 +12,7 @@ _Problems on this step: Disabling animations when making snapshot tests._
 _Problems on this step: fixing edge cases when swiping forward/backward; saving state while toogle is set to read and backward._
 
 4. **Refactor**
-Make iOS 16 minimum. Most of the users use current (not beta) and previous versions.
-SwiftLint, SwiftFormat to keep the code same looking and using the same rules.
+Make iOS 16 minimum. Most of the users use current (not beta) and previous versions. Formatting code.
 Localization to be flexible using new languages in future
 
 ### TODO:
