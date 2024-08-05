@@ -1,19 +1,22 @@
 # AddMile by Headway Test Task. Book Listener. Using SwiftUI, MVVM, TDD
 
-### Path
+### Path (4 hours)
 1. **Project setup** Create github repo, add gitignore, ReadMe file. Add colors, AppIcon, make project use SwiftUI. 
 
+(8 hours)
 2. **Listen screen UI** Create UIComponents, develop screens using them. Snapshot testing each component та screen, in light and dark mode. Now we do not miss any UI change.
 
 _Problems on this step: Disabling animations when making snapshot tests._
 
+(12 hours)
 3. **Listen feature** Test driving development of AudioViewModel, ListenScreenViewModel. Using AVKit for audio playback, MVVM for UI architecture. Testing ViewModels one by one. Testing ListenScreen (screen playing audio book) in integration: UI + ViewModel.
 
 _Problems on this step: fixing edge cases when swiping forward/backward; saving state while toogle is set to read and backward._
 
-4. **Refactor**
+(3 hours)
+4. **Refactorings**
 Make iOS 16 minimum. Most of the users use current (not beta) and previous versions. Formatting code.
-Localization to be flexible using new languages in future
+Localization to be flexible using new languages in future. Refactoring some code.
 
 ### TODO:
 - move mocks out of main target code to tests. Use real data and integrate app with data source.
