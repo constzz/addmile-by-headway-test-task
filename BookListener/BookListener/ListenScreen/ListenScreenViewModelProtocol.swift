@@ -17,6 +17,9 @@ protocol ListenScreenViewModelProtocol {
     var chaptersCount: Int { get }
     var bookCover: URL? { get }
     
+    var isPreviousActivePublisher: AnyPublisher<Bool, Never> { get }
+    var isNextActivePublisher: AnyPublisher<Bool, Never> { get }
+    
     var currentTimeInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
     var currentTimePublisher: AnyPublisher<String, Never> { get }

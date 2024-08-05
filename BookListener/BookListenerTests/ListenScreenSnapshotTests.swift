@@ -26,6 +26,10 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var isPreviousActivePublisher: AnyPublisher<Bool, Never> { CurrentValueSubject(false).eraseToAnyPublisher()  }
+    
+    var isNextActivePublisher: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }
+    
     var bookCover: URL?
     
     var currentChapterPublisher: AnyPublisher<BookListener.Chapter?, Never> {

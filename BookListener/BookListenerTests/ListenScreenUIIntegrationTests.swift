@@ -77,18 +77,44 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
     }
     
     func test_listenScreen_nextPreviousAudio() async throws {
-        let (view, audioViewModel, listVM) = makeSUT()
+        let (view, audioViewModel, listenVM) = makeSUT()
         await view.forceRender()
         
         try view.hitButtonWith(role: .next)
-        XCTAssertEqual(listVM.currentChapter?.index, 1)
+        XCTAssertEqual(listenVM.currentChapter?.index, 1)
         
         try view.hitButtonWith(role: .next)
-        XCTAssertEqual(listVM.currentChapter?.index, 2)
+        XCTAssertEqual(listenVM.currentChapter?.index, 2)
         
         
         try view.hitButtonWith(role: .previous)
-        XCTAssertEqual(listVM.currentChapter?.index, 1)
+        XCTAssertEqual(listenVM.currentChapter?.index, 1)
+    }
+    
+    func test_listenScreen_nextPreviousAudio_blocksButtons() async throws {
+        let (view, audioViewModel, listenVM) = makeSUT()
+        await view.forceRender()
+        
+        listenVM.isPreviousActivePublisher.waitForPublisher(expectedValue: false, cancellables: &cancellables)
+        listenVM.isNextActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+        
+        try view.hitButtonWith(role: .next)
+        
+        listenVM.isPreviousActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+        listenVM.isNextActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+
+        try view.hitButtonWith(role: .next)
+        listenVM.isPreviousActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+        listenVM.isNextActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+        
+        
+        try view.hitButtonWith(role: .next)
+        try view.hitButtonWith(role: .next)
+        try view.hitButtonWith(role: .next)
+        
+        listenVM.isPreviousActivePublisher.waitForPublisher(expectedValue: true, cancellables: &cancellables)
+        listenVM.isNextActivePublisher.waitForPublisher(expectedValue: false, cancellables: &cancellables)
+
     }
     
     func test_listScreen_showsCurrentProgress() async throws {

@@ -68,6 +68,18 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             .eraseToAnyPublisher()
     }
     
+    var isPreviousActivePublisher: AnyPublisher<Bool, Never> {
+        isPreviousActiveSubject.eraseToAnyPublisher()
+    }
+    
+    private let isPreviousActiveSubject = CurrentValueSubject<Bool, Never>(true)
+    
+    var isNextActivePublisher: AnyPublisher<Bool, Never> {
+        isNextActiveSubject.eraseToAnyPublisher()
+    }
+    
+    private let isNextActiveSubject = CurrentValueSubject<Bool, Never>(true)
+    
     private let dateComponentsFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
@@ -139,6 +151,19 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     private func onCurrentChapterUpdate(chapter: Chapter?) {
         currentChapterSubject.send(currentChapter)
+        
+        if let chapter {
+            let previousIndex = chapter.index - 1
+            isPreviousActiveSubject.send(book.chapters.safelyRetrieve(elementAt: previousIndex) != nil)
+            
+            let nextIndex = chapter.index + 1
+            isNextActiveSubject.send(book.chapters.safelyRetrieve(elementAt: nextIndex) != nil)
+        } else {
+            isPreviousActiveSubject.send(false)
+            isNextActiveSubject.send(false)
+        }
+        
+        
         if let url = currentChapter?.url {
             try? audioViewModel.set(url: url)
             audioViewModel.play()

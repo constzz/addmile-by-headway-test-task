@@ -68,7 +68,9 @@ struct ListenScreenView: View {
                     pauseAction: { viewModel.togglePlayPause() },
                     forwardAction: { viewModel.forward() },
                     nextAction: { viewModel.next() }),
-                                    isPlayActivePublisher: viewModel.isPlaying
+                                    isPlayActivePublisher: viewModel.isPlaying,
+                                    isPreviousActivePublisher: viewModel.isPreviousActivePublisher,
+                                    isNextActivePublisher: viewModel.isNextActivePublisher
                 )
             case .read:
                 Rectangle()
