@@ -76,7 +76,12 @@ final class AudioViewModel: NSObject, AudioViewModelProtocol {
     }
     
     func forward(seconds: Double) {
-        seekTo(Double(player.currentTime) + seconds)
+        let newValue = Double(player.currentTime) + seconds
+        if newValue > totalDurationInSecondsSubject.value {
+            seekTo(totalDurationInSecondsSubject.value - 0.1)
+        } else {
+            seekTo(Double(player.currentTime) + seconds)
+        }
     }
     
     func reverse(seconds: Double) {

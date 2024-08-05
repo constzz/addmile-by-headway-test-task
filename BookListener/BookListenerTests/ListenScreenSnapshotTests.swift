@@ -21,11 +21,26 @@ final class ListenScreenSnapshotTests: XCTestCase {
     }
     
     private func makeSUT(mode: ListenScreenMode) -> ListenScreenView {
-        return ListenScreenView(mode: mode, isAnimating: false, viewModel: ListenScreenViewModelStub())
+        return ListenScreenView(isAnimating: false, viewModel: ListenScreenViewModelStub(mode: .init(mode)))
     }
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var mode: CurrentValueSubject<BookListener.ListenScreenMode, Never>
+    
+    lazy var currentTimeInSecondsString: AnyPublisher<String, Never> = currentTimePublisher
+    
+    var sliderChangeSubject: PassthroughSubject<Double, Never> = .init()
+    
+    var isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+    
+    func onChangeEnd(finalSliderChange: Double) {
+    }
+    
+    init(mode: CurrentValueSubject<BookListener.ListenScreenMode, Never>) {
+        self.mode = mode
+    }
+    
     var currentSpeedPublisher: AnyPublisher<Double, Never> {
         CurrentValueSubject<Double, Never>(0.0).eraseToAnyPublisher()
     }

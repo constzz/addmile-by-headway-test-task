@@ -20,5 +20,6 @@ struct PlaybackControlViewButtonStyle: ButtonStyle {
                        value: configuration.isPressed)
             .opacity(isEnabled ? 1.0 : 0.5)
             .imageScale(.large)
+            .font(.title2)
     }
 }

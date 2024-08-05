@@ -192,9 +192,9 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         let listenScreenViewModel = ListenScreenViewModel(
             book: Mock.mockedThinkAndGrowRichBook,
             defaultChapterIndex: 0,
-            audioViewModel: audioViewModel)
+            audioViewModel: audioViewModel, 
+            mode: .listen)
         let view = ListenScreenView(
-            mode: .listen,
             isAnimating: false,
             viewModel: listenScreenViewModel)
         return (view, audioViewModel, listenScreenViewModel)

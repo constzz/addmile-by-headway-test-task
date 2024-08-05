@@ -12,13 +12,15 @@
 		7F48B3E72C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3E52C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */; };
 		7F48B3E82C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3E62C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */; };
 		7F48B3EA2C601FB6006CCB29 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3E92C601FB6006CCB29 /* Book.swift */; };
-		7F48B3EC2C602898006CCB29 /* MockedFileURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */; };
+		7F48B3EC2C602898006CCB29 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EB2C602898006CCB29 /* Mocks.swift */; };
 		7F48B3EE2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */; };
 		7F48B3F02C60AB24006CCB29 /* SpeedChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48B3EF2C60AB24006CCB29 /* SpeedChangeView.swift */; };
 		7F48B3F32C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3F12C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_dark.png */; };
 		7F48B3F42C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3F22C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_light.png */; };
-		7F48B3F72C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3F52C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */; };
-		7F48B3F82C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3F62C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */; };
+		7F48B3FE2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3F92C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */; };
+		7F48B3FF2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3FA2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */; };
+		7F48B4002C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3FB2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_dark.png */; };
+		7F48B4012C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3FC2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -47,8 +49,6 @@
 		7F87815C2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87815A2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png */; };
 		7F87815E2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87815D2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png */; };
 		7F8781602C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F87815F2C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png */; };
-		7F8781662C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */; };
-		7F8781682C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */; };
 		7F87816A2C5F69BA00B12A36 /* ListenScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */; };
 		7F8781742C5F859E00B12A36 /* 00 Introduction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */; };
 		7F8781752C5F859E00B12A36 /* 01 Chapter 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */; };
@@ -80,13 +80,15 @@
 		7F48B3E52C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_light.png; sourceTree = "<group>"; };
 		7F48B3E62C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_sliderView_empty.400_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F48B3E92C601FB6006CCB29 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFileURLs.swift; sourceTree = "<group>"; };
+		7F48B3EB2C602898006CCB29 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		7F48B3ED2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = think_and_grow_rich_book_cover.jpg; sourceTree = "<group>"; };
 		7F48B3EF2C60AB24006CCB29 /* SpeedChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedChangeView.swift; sourceTree = "<group>"; };
 		7F48B3F12C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_speedChangeView.300_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F48B3F22C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_speedChangeView.300_200_pixels_light.png; sourceTree = "<group>"; };
-		7F48B3F52C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
-		7F48B3F62C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
+		7F48B3F92C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
+		7F48B3FA2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_listenMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
+		7F48B3FB2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
+		7F48B3FC2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,8 +117,6 @@
 		7F87815A2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_chapterInfoView.300_200_pixels_dark.png; sourceTree = "<group>"; };
 		7F87815D2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_coverImageView.200_300_pixels_dark.png; sourceTree = "<group>"; };
 		7F87815F2C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_coverImageView.200_300_pixels_light.png; sourceTree = "<group>"; };
-		7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
-		7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_dark.png; sourceTree = "<group>"; };
 		7F8781692C5F69BA00B12A36 /* ListenScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenScreenViewModelTests.swift; sourceTree = "<group>"; };
 		7F87816D2C5F859E00B12A36 /* 00 Introduction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "00 Introduction.mp3"; sourceTree = "<group>"; };
 		7F87816E2C5F859E00B12A36 /* 01 Chapter 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 Chapter 1.mp3"; sourceTree = "<group>"; };
@@ -156,6 +156,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F48B3FD2C60D94D006CCB29 /* ListenScreenSnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F48B3F92C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */,
+				7F48B3FA2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */,
+				7F48B3FB2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_dark.png */,
+				7F48B3FC2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png */,
+			);
+			path = ListenScreenSnapshotTests;
+			sourceTree = "<group>";
+		};
 		7F8780792C5D7CAF00B12A36 = {
 			isa = PBXGroup;
 			children = (
@@ -246,7 +257,7 @@
 		7F8780F12C5E3E2300B12A36 /* __Snapshots__ */ = {
 			isa = PBXGroup;
 			children = (
-				7F8781522C5F64DC00B12A36 /* ListenScreenSnapshotTests */,
+				7F48B3FD2C60D94D006CCB29 /* ListenScreenSnapshotTests */,
 				7F8780F02C5E3E2300B12A36 /* BookListenerSnapshotTests */,
 			);
 			path = __Snapshots__;
@@ -311,17 +322,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7F8781522C5F64DC00B12A36 /* ListenScreenSnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				7F48B3F52C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png */,
-				7F48B3F62C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_light.png */,
-				7F8781642C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png */,
-				7F8781622C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png */,
-			);
-			path = ListenScreenSnapshotTests;
-			sourceTree = "<group>";
-		};
 		7F8781732C5F859E00B12A36 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +332,7 @@
 				7F8781702C5F859E00B12A36 /* 03 Chapter 3.mp3 */,
 				7F8781712C5F859E00B12A36 /* 04 Chapter 4.mp3 */,
 				7F8781722C5F859E00B12A36 /* 05 Chapter 5.mp3 */,
-				7F48B3EB2C602898006CCB29 /* MockedFileURLs.swift */,
+				7F48B3EB2C602898006CCB29 /* Mocks.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -462,21 +462,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F8781682C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */,
 				7F87813F2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_light.png in Resources */,
 				7F8781412C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_light.png in Resources */,
 				7F48B3F32C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_dark.png in Resources */,
-				7F48B3F82C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_light.png in Resources */,
+				7F48B3FE2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */,
 				7F48B3E82C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_dark.png in Resources */,
+				7F48B4012C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */,
 				7F8781282C5E949100B12A36 /* test_playbackControlView.300_200_pixels_light.png in Resources */,
+				7F48B4002C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_dark.png in Resources */,
 				7F87813E2C5F570800B12A36 /* test_toggleView_listenMode.400_200_pixels_dark.png in Resources */,
 				7F48B3F42C60AD8D006CCB29 /* test_speedChangeView.300_200_pixels_light.png in Resources */,
 				7F87815E2C5F659500B12A36 /* test_coverImageView.200_300_pixels_dark.png in Resources */,
 				7F87815B2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_light.png in Resources */,
-				7F48B3F72C60B7D4006CCB29 /* test_listenMode_empty.iphone13PRO_dark.png in Resources */,
-				7F8781662C5F66E500B12A36 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */,
 				7F8781602C5F65BA00B12A36 /* test_coverImageView.200_300_pixels_light.png in Resources */,
 				7F8781402C5F570800B12A36 /* test_toggleView_readMode.400_200_pixels_dark.png in Resources */,
+				7F48B3FF2C60D94D006CCB29 /* test_listenMode_empty.iphone13PRO_light.png in Resources */,
 				7F48B3E72C601DC8006CCB29 /* test_sliderView_empty.400_200_pixels_light.png in Resources */,
 				7F8781272C5E949100B12A36 /* test_playbackControlView.300_200_pixels_dark.png in Resources */,
 				7F87815C2C5F64F900B12A36 /* test_chapterInfoView.300_200_pixels_dark.png in Resources */,
@@ -507,7 +507,7 @@
 				7F8781162C5E54BD00B12A36 /* PlaybackControlViewRole.swift in Sources */,
 				7F48B3EA2C601FB6006CCB29 /* Book.swift in Sources */,
 				7F8781392C5EAFF600B12A36 /* ListenScreenMode.swift in Sources */,
-				7F48B3EC2C602898006CCB29 /* MockedFileURLs.swift in Sources */,
+				7F48B3EC2C602898006CCB29 /* Mocks.swift in Sources */,
 				7F8781142C5E54A000B12A36 /* PlaybackControlViewButtonStyle.swift in Sources */,
 				7F8781202C5E673500B12A36 /* RoundingPrecision.swift in Sources */,
 			);

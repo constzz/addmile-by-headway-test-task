@@ -1,5 +1,5 @@
 //
-//  MockedFileURLs.swift
+//  Mocks.swift
 //  BookListener
 //
 //  Created by Konstantin Bezzemelnyi on 05.08.2024.
@@ -29,7 +29,7 @@ enum Mock {
 
     static let mockedThinkAndGrowRichBook: Book = .init(
         chapters: thinkAndGrowRichFileURLs.enumerated().map { index, url in
-            .init(index: index, title: "Chapter \(index)", url: url)
+            .init(index: index, title: index == 0 ? "Introduction" : "Chapter \(index)", url: url)
         },
         coverURL: thinkAndGrowRichBookCover)
 

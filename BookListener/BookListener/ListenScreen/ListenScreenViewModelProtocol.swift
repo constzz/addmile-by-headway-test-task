@@ -9,6 +9,8 @@ import Combine
 import Foundation
 
 protocol ListenScreenViewModelProtocol {
+    var mode: CurrentValueSubject<ListenScreenMode, Never> { get }
+    
     var isPlaying: AnyPublisher<Bool, Never> { get }
     var isPlayingNonUpdatingValue: Bool { get }
     
@@ -25,6 +27,10 @@ protocol ListenScreenViewModelProtocol {
     var changePlaybackSpeedSubject: PassthroughSubject<Void, Never> { get }
     
     var currentTimeInSeconds: AnyPublisher<Double, Never> { get }
+    var currentTimeInSecondsString: AnyPublisher<String, Never> { get }
+    
+    var sliderChangeSubject: PassthroughSubject<Double, Never> { get }
+    var isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
     var currentTimePublisher: AnyPublisher<String, Never> { get }
     var durationTimePublisher: AnyPublisher<String, Never> { get }
@@ -37,4 +43,5 @@ protocol ListenScreenViewModelProtocol {
     func seekTo(_ value: Double)
     
     func convertProgresToCurrentTime(progress: Double) -> String
+    func onChangeEnd(finalSliderChange: Double)
 }

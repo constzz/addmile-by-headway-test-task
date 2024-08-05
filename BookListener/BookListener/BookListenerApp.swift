@@ -14,12 +14,12 @@ struct BookListenerApp: App {
         WindowGroup {
             VStack {
                 ListenScreenView(
-                    mode: .listen,
                     isAnimating: true,
                     viewModel: ListenScreenViewModel(
                         book: Mock.mockedThinkAndGrowRichBook,
                         defaultChapterIndex: nil,
-                        audioViewModel: AudioViewModel()))
+                        audioViewModel: AudioViewModel(), 
+                        mode: .listen))
             }
         }
     }

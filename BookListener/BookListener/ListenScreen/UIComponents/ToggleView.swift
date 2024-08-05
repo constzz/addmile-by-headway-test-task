@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ToggleView: View {
     
-    @Binding var listenScreenMode: ListenScreenMode
+    @State private var listenScreenMode: ListenScreenMode = .listen
+    private let listenScreenModePublisher: CurrentValueSubject <ListenScreenMode, Never>
     @State private var position: CGFloat = 0
     @State private var size: CGSize = .zero
     @Binding private var isAnimating: Bool
     
     init(
-        listenScreenMode: Binding<ListenScreenMode>,
+        listenScreenModePublisher: CurrentValueSubject<ListenScreenMode, Never>,
         isAnimating: Binding<Bool>
     ) {
-        self._listenScreenMode = listenScreenMode
+        self.listenScreenModePublisher = listenScreenModePublisher
         self._isAnimating = isAnimating
     }
     
@@ -44,7 +46,7 @@ struct ToggleView: View {
                     
                     HStack(spacing: buttonHorizontalStackSpacing) {
                         ForEach(ListenScreenMode.allCases, id: \.self) { mode in
-                            Button(action: { onModeSelected(mode)},
+                            Button(action: { listenScreenModePublisher.send(mode) },
                                    label: {
                                     mode.image.foregroundColor(listenScreenMode == mode ? .light : .dark)
                                 })
@@ -54,7 +56,10 @@ struct ToggleView: View {
                 }
                 .frame(width: frameWidth, height: 60)
                 .onAppear {
-                        onModeSelected(listenScreenMode)
+                    onModeSelected(listenScreenModePublisher.value)
+                }
+                .onReceive(listenScreenModePublisher.eraseToAnyPublisher()) { mode in
+                    onModeSelected(mode)
                 }
             }
         }

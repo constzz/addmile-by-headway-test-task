@@ -157,7 +157,8 @@ final class ListenScreenViewModelTests: XCTestCase {
         return ListenScreenViewModel(
             book: chapters == nil ? Mock.mockedThinkAndGrowRichBook : Book(chapters: chapters ?? [], coverURL: nil),
             defaultChapterIndex: defaultChapterIndex,
-            audioViewModel: audioViewModel
+            audioViewModel: audioViewModel,
+            mode: .listen
         )
     }
     

@@ -27,14 +27,14 @@ class BookListenerSnapshotTests: XCTestCase {
     
     func test_toggleView_listenMode() {
         let view = ToggleView(
-            listenScreenMode: .constant(.listen), isAnimating: .constant(false)
+            listenScreenModePublisher: CurrentValueSubject(.listen), isAnimating: .constant(false)
         )
         self.assertImageSnapshot(ofView: view, name: .snapshotName400_per_200, config: .config_400_200_pixels)
     }
     
     func test_toggleView_readMode() {
         let view = ToggleView(
-            listenScreenMode: .constant(.read), isAnimating: .constant(false)
+            listenScreenModePublisher: CurrentValueSubject(.read), isAnimating: .constant(false)
         )
         self.assertImageSnapshot(ofView: view, name: .snapshotName400_per_200, config: .config_400_200_pixels)
     }

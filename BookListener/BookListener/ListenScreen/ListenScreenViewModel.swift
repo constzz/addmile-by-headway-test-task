@@ -10,12 +10,21 @@ import Foundation
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
+    var mode: CurrentValueSubject<ListenScreenMode, Never>
+
     var totalDuration: Double {
         audioViewModel.totalDurationInSeconds
     }
     
+    let sliderChangeSubject: PassthroughSubject<Double, Never> = .init()
+    let isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> = .init(false)
+    
     var currentTimeInSeconds: AnyPublisher<Double, Never> {
         audioViewModel.currentTimeInSeconds
+    }
+    
+    var currentTimeInSecondsString: AnyPublisher<String, Never> {
+        currentTimePublisher
     }
 
     var isPlaying: AnyPublisher<Bool, Never> {
@@ -41,6 +50,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     private(set) var currentChapter: Chapter? {
         didSet { onCurrentChapterUpdate(chapter: currentChapter) }
     }
+    
+    let wasPlayingBeforeSliderChange: CurrentValueSubject<Bool, Never> = .init(false)
         
     var chaptersCount: Int {
         book.chapters.count
@@ -51,21 +62,15 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     }
         
     var progressPublisher: AnyPublisher<Double, Never> {
-        currentTimeInSeconds
-            .combineLatest(audioViewModel.totalDurationInSecondsPublisher)
-            .map { currentTimeInSeconds, duration in
-                return currentTimeInSeconds / duration * 100
-            }
-            .eraseToAnyPublisher()
+        progressSubject.eraseToAnyPublisher()
     }
     
+    private let progressSubject: CurrentValueSubject<Double, Never> = .init(0.0)
+    
     var currentTimePublisher: AnyPublisher<String, Never> {
-        currentTimeInSeconds
-            .map { [dateComponentsFormatter] in
-                return dateComponentsFormatter.string(from: $0) ?? ""
-            }
-            .eraseToAnyPublisher()
+        currentTimeSubject.eraseToAnyPublisher()
     }
+    private let currentTimeSubject: CurrentValueSubject<String, Never> = .init("")
     
     var durationTimePublisher: AnyPublisher<String, Never> {
         audioViewModel.totalDurationInSecondsPublisher
@@ -108,7 +113,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     init(
         book: Book,
         defaultChapterIndex: Int?,
-        audioViewModel: AudioViewModelProtocol
+        audioViewModel: AudioViewModelProtocol,
+        mode: ListenScreenMode
     ) {
         self.book = book
         if let defaultChapterIndex, let firstChapter = book.chapters.safelyRetrieve(elementAt: defaultChapterIndex) {
@@ -117,6 +123,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self.currentChapter = book.chapters.first
         }
         self.audioViewModel = audioViewModel
+        self.mode = .init(mode)
         self.audioViewModel.onFinishPlaying = { [weak self] in
             self?.next()
         }
@@ -130,9 +137,50 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self.audioViewModel.speed = Float(newValue)
             self.currentSpeedSubject.send(newValue)
         }.store(in: &cancellables)
+        
+        sliderChangeSubject
+            .dropFirst()
+            .debounce(for: 0.01, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map { $0.rounded() }
+            .eraseToAnyPublisher()
+        .sink { [weak self] sliderChange in
+            guard let self else { return }
+            self.isEditingCurrentTimeSubject.send(true)
+            if self.isPlayingNonUpdatingValue {
+                self.togglePlayPause()
+                self.wasPlayingBeforeSliderChange.send(true)
+            }
+        }.store(in: &cancellables)
+        
+        currentTimeInSeconds
+            .combineLatest(sliderChangeSubject)
+            .sink { [weak self] currentTimeInSecond, sliderChange in
+                guard let self else { return  }
+                let isEditingCurrentTime = self.isEditingCurrentTimeSubject.value
+                self.progressSubject.send(isEditingCurrentTime ? sliderChange : (currentTimeInSecond / self.totalDuration) * 100)
+                self.currentTimeSubject.send(isEditingCurrentTime
+                            ? convertProgresToCurrentTime(progress: sliderChange / 100)
+                            : dateComponentsFormatter.string(from: currentTimeInSecond) ?? "")
+            }.store(in: &cancellables)
+        
+    }
+    
+    func onChangeEnd(finalSliderChange: Double) {
+        isEditingCurrentTimeSubject.send(false)
+        let newValueInSeconds = finalSliderChange / 100 * totalDuration
+        seekTo(newValueInSeconds)
+        if wasPlayingBeforeSliderChange.value && !isPlayingNonUpdatingValue {
+            togglePlayPause()
+            wasPlayingBeforeSliderChange.send(false)
+        }
+        if newValueInSeconds == totalDuration {
+            next()
+        }
     }
     
     func togglePlayPause() {
+        isEditingCurrentTimeSubject.send(false)
         isPlayingSubject.send(!isPlayingSubject.value)
         isPlayingSubject.value ? audioViewModel.play() : audioViewModel.pause()
     }
@@ -156,6 +204,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         guard let currentChapter else { return }
         if let nextChapter = book.chapters.safelyRetrieve(elementAt: currentChapter.index + 1) {
             self.currentChapter = nextChapter
+        } else {
+            self.togglePlayPause()
         }
     }
     
