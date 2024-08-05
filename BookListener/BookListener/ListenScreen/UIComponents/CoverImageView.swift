@@ -8,19 +8,34 @@
 import SwiftUI
 
 struct CoverImageView: View {
-    var coverImage: Image
+    var coverImage: URL?
     var foregroundColor: Color
     
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.biege)
-            coverImage
-                .resizable()
-                .foregroundStyle(foregroundColor)
-                .frame(width: 200, height: 300)
-                .aspectRatio(contentMode: .fill)
-                .clipped()
+            
+            if let coverImage {
+                AsyncImage(url: coverImage)
+                    { result in
+                        result.image?
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .foregroundStyle(foregroundColor)
+                    .frame(width: 200, height: 300)
+                    .aspectRatio(contentMode: .fit)
+                    .clipped()
+            } else {
+                Image(systemName: "book")
+                    .resizable()
+                    .foregroundStyle(foregroundColor)
+                    .frame(width: 200, height: 300)
+                    .aspectRatio(contentMode: .fit)
+                    .clipped()
+                
+            }
         }
     }
 }
