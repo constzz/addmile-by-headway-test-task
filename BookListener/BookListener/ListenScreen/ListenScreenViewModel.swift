@@ -9,16 +9,16 @@ import Combine
 import Foundation
 
 final class ListenScreenViewModel: ListenScreenViewModelProtocol {
-    
     var mode: CurrentValueSubject<ListenScreenMode, Never>
 
     var totalDuration: Double {
         audioViewModel.totalDurationInSeconds
     }
-    
+
     var errorPublisher: AnyPublisher<String, Never> {
         errorSubject.eraseToAnyPublisher()
     }
+
     private let errorSubject: PassthroughSubject<String, Never> = .init()
 
     let sliderChangeSubject: PassthroughSubject<Double, Never> = .init()

@@ -100,17 +100,16 @@ struct ListenScreenView: View {
             self.mode = mode
         }
         .alert(isPresented: $showAlert) {
-           Alert(
+            Alert(
                 title: Text(R.string.localizable.error),
                 message: Text(errorMessage ?? R.string.localizable.unknownError()),
-               dismissButton: .default(Text(R.string.localizable.ok))
-           )
-       }
+                dismissButton: .default(Text(R.string.localizable.ok))
+            )
+        }
     }
-    
+
     private func showError(_ errorMessage: String) {
         self.errorMessage = errorMessage
-        self.showAlert = true
-
+        showAlert = true
     }
 }

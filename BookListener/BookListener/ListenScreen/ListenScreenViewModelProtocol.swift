@@ -13,14 +13,14 @@ protocol ListenScreenViewModelProtocol {
 
     var isPlaying: AnyPublisher<Bool, Never> { get }
     var isPlayingNonUpdatingValue: Bool { get }
-    
+
     var errorPublisher: AnyPublisher<String, Never> { get }
-    
+
     var currentChapter: Chapter? { get }
     var currentChapterPublisher: AnyPublisher<Chapter?, Never> { get }
-    
+
     var chaptersCount: Int { get }
-    
+
     var bookCover: URL? { get }
 
     var isPreviousActivePublisher: AnyPublisher<Bool, Never> { get }
@@ -35,12 +35,12 @@ protocol ListenScreenViewModelProtocol {
 
     var sliderChangeSubject: PassthroughSubject<Double, Never> { get }
     var isEditingCurrentTimeSubject: CurrentValueSubject<Bool, Never> { get }
-    
+
     var progressPublisher: AnyPublisher<Double, Never> { get }
-    
+
     var currentTimePublisher: AnyPublisher<String, Never> { get }
     var durationTimePublisher: AnyPublisher<String, Never> { get }
-    
+
     func togglePlayPause()
     func reverse()
     func forward()

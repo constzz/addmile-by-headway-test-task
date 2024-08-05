@@ -104,6 +104,8 @@ private extension AudioViewModel {
     }
 }
 
+// MARK: AVAudioPlayerDelegate
+
 extension AudioViewModel: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully flag: Bool) {
         guard flag else {
@@ -111,8 +113,8 @@ extension AudioViewModel: AVAudioPlayerDelegate {
         }
         onFinishPlaying?()
     }
-    
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: (any Error)?) {
+
+    func audioPlayerDecodeErrorDidOccur(_: AVAudioPlayer, error: (any Error)?) {
         onError?(error)
     }
 }
