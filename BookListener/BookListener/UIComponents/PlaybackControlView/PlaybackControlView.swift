@@ -20,7 +20,6 @@ struct PlaybackControlView: View {
             Button(action: { state.previousAction() },
                    label: { Role.previous.imageView })
             .buttonStyle(PlaybackControlViewButtonStyle())
-            .disabled(true)
             
             Button(action: { state.reverseAction() },
                    label: { Role.reverse.imageView })

@@ -76,6 +76,21 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
             cancellables: &cancellables)
     }
     
+    func test_listenScreen_nextPreviousAudio() async throws {
+        let (view, audioViewModel, listVM) = makeSUT()
+        await view.forceRender()
+        
+        try view.hitButtonWith(role: .next)
+        XCTAssertEqual(listVM.currentChapter?.index, 1)
+        
+        try view.hitButtonWith(role: .next)
+        XCTAssertEqual(listVM.currentChapter?.index, 2)
+        
+        
+        try view.hitButtonWith(role: .previous)
+        XCTAssertEqual(listVM.currentChapter?.index, 1)
+    }
+    
     func test_listScreen_showsCurrentProgress() async throws {
         let (view, audioViewModel) = makeSUT()
         

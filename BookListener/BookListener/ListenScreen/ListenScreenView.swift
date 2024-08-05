@@ -62,12 +62,12 @@ struct ListenScreenView: View {
                         }
                     })
                 PlaybackControlView(state: .init(
-                    previousAction: {},
+                    previousAction: { viewModel.previous() },
                     reverseAction: { viewModel.reverse() },
                     playAction: { viewModel.togglePlayPause() },
                     pauseAction: { viewModel.togglePlayPause() },
                     forwardAction: { viewModel.forward() },
-                    nextAction: {}),
+                    nextAction: { viewModel.next() }),
                                     isPlayActivePublisher: viewModel.isPlaying
                 )
             case .read:
