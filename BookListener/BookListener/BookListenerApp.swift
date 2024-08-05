@@ -17,7 +17,6 @@ struct BookListenerApp: App {
                     isAnimating: true,
                     viewModel: ListenScreenViewModel(
                         book: Mock.mockedThinkAndGrowRichBook,
-                        defaultChapterIndex: nil,
                         audioViewModel: AudioViewModel(), 
                         mode: .listen))
             }

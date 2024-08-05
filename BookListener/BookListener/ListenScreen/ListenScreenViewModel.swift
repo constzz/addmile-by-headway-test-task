@@ -112,7 +112,7 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     
     init(
         book: Book,
-        defaultChapterIndex: Int?,
+        defaultChapterIndex: Int? = nil,
         audioViewModel: AudioViewModelProtocol,
         mode: ListenScreenMode
     ) {
