@@ -3,18 +3,15 @@
 ### Path (4 hours)
 1. **Project setup** Create github repo, add gitignore, ReadMe file. Add colors, AppIcon, make project use SwiftUI. 
 
-(8 hours)
-2. **Listen screen UI** Create UIComponents, develop screens using them. Snapshot testing each component та screen, in light and dark mode. Now we do not miss any UI change.
+2. **Listen screen UI (8 hours)** Create UIComponents, develop screens using them. Snapshot testing each component та screen, in light and dark mode. Now we do not miss any UI change.
 
 _Problems on this step: Disabling animations when making snapshot tests._
 
-(12 hours)
-3. **Listen feature** Test driving development of AudioViewModel, ListenScreenViewModel. Using AVKit for audio playback, MVVM for UI architecture. Testing ViewModels one by one. Testing ListenScreen (screen playing audio book) in integration: UI + ViewModel.
+3. **Listen feature** (12 hours) Test driving development of AudioViewModel, ListenScreenViewModel. Using AVKit for audio playback, MVVM for UI architecture. Testing ViewModels one by one. Testing ListenScreen (screen playing audio book) in integration: UI + ViewModel.
 
 _Problems on this step: fixing edge cases when swiping forward/backward; saving state while toogle is set to read and backward._
 
-(3 hours)
-4. **Refactorings**
+4. **Refactorings (3 hours)**
 Make iOS 16 minimum. Most of the users use current (not beta) and previous versions. Formatting code.
 Localization to be flexible using new languages in future. Refactoring some code.
 
