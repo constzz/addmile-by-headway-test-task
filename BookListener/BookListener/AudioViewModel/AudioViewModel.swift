@@ -49,6 +49,7 @@ final class AudioViewModel: NSObject, AudioViewModelProtocol {
     func set(url: URL) throws {
         self.player = try .init(contentsOf: url)
         self.player.delegate = self
+        self.player.enableRate = true
         
         currentTimeInSecondsSubject.send(0.0)
         totalDurationInSecondsSubject.send(player.duration)

@@ -27,14 +27,22 @@ struct SpeedChangeView: View {
         }) {
             Text("Speed x\(speedValueFormatted)")
                 .font(.system(size: 13, weight: .medium, design: .default))
+                .animation(nil)
         }
         .padding(10)
         .background(.darkBiege)
         .foregroundColor(.dark)
         .cornerRadius(6)
+        .buttonStyle(NonHighlitedButton())
         .onReceive(speedValueFormattedPublisher) { newValue in
             speedValueFormatted = newValue
         }
     }
 }
 
+
+private struct NonHighlitedButton: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+    }
+}

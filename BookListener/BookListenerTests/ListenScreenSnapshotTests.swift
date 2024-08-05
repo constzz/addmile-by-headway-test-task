@@ -26,6 +26,12 @@ final class ListenScreenSnapshotTests: XCTestCase {
 }
 
 final class ListenScreenViewModelStub: ListenScreenViewModelProtocol {
+    var currentSpeedPublisher: AnyPublisher<Double, Never> {
+        CurrentValueSubject<Double, Never>(0.0).eraseToAnyPublisher()
+    }
+    
+    var changePlaybackSpeedSubject: PassthroughSubject<Void, Never> = .init()
+    
     var isPreviousActivePublisher: AnyPublisher<Bool, Never> { CurrentValueSubject(false).eraseToAnyPublisher()  }
     
     var isNextActivePublisher: AnyPublisher<Bool, Never> { Empty().eraseToAnyPublisher() }

@@ -29,6 +29,13 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
         currentChapterSubject.eraseToAnyPublisher()
     }
     
+    var currentSpeedPublisher: AnyPublisher<Double, Never> {
+        currentSpeedSubject.eraseToAnyPublisher()
+    }
+    
+    let changePlaybackSpeedSubject = PassthroughSubject<Void, Never>()
+    private let currentSpeedSubject = CurrentValueSubject<Double, Never>(1.0)
+        
     private lazy var currentChapterSubject = CurrentValueSubject<Chapter?, Never>(currentChapter)
     
     private(set) var currentChapter: Chapter? {
@@ -96,6 +103,8 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
     private let book: Book
     private var audioViewModel: AudioViewModelProtocol
     
+    private var cancellables: Set<AnyCancellable> = .init()
+    
     init(
         book: Book,
         defaultChapterIndex: Int?,
@@ -112,6 +121,15 @@ final class ListenScreenViewModel: ListenScreenViewModelProtocol {
             self?.next()
         }
         onCurrentChapterUpdate(chapter: self.currentChapter)
+        changePlaybackSpeedSubject.sink { [weak self] _ in
+            guard let self else { return }
+            var newValue = self.currentSpeedSubject.value + 0.25
+            if newValue > 2.0 {
+                newValue = 0.25
+            }
+            self.audioViewModel.speed = Float(newValue)
+            self.currentSpeedSubject.send(newValue)
+        }.store(in: &cancellables)
     }
     
     func togglePlayPause() {

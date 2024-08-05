@@ -151,6 +151,22 @@ final class ListenScreenUIIntegrationTests: XCTestCase {
         XCTAssertEqual(listenScreenVM.currentChapter?.index, 1)
     }
     
+    func test_changesSpeeds() async throws {
+        let (view, audioViewModel, listenScreenVM) = makeSUT()
+        
+        await view.forceRender()
+        
+        let speedChangeView = try view.inspect().find(SpeedChangeView.self).actualView()
+        
+        let speedsToTestOrdered: [Float] = [1.0, 1.25, 1.5, 1.75, 2.0, 0.25, 0.50, 0.75, 1.0]
+        
+        try speedsToTestOrdered.forEach { speed in
+            speedChangeView.speedValueFormattedPublisher.waitForPublisher(expectedValue: speed.description, cancellables: &cancellables)
+            XCTAssertEqual(audioViewModel.speed.description, speed.description)
+            try speedChangeView.inspect().button().tap()
+        }
+    }
+    
     
     private func makeSUT(
         file: StaticString = #filePath,

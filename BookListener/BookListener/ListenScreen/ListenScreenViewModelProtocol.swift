@@ -20,6 +20,10 @@ protocol ListenScreenViewModelProtocol {
     var isPreviousActivePublisher: AnyPublisher<Bool, Never> { get }
     var isNextActivePublisher: AnyPublisher<Bool, Never> { get }
     
+    var currentSpeedPublisher: AnyPublisher<Double, Never> { get }
+    
+    var changePlaybackSpeedSubject: PassthroughSubject<Void, Never> { get }
+    
     var currentTimeInSeconds: AnyPublisher<Double, Never> { get }
     var progressPublisher: AnyPublisher<Double, Never> { get }
     var currentTimePublisher: AnyPublisher<String, Never> { get }

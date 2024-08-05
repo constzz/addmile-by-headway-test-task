@@ -61,6 +61,13 @@ struct ListenScreenView: View {
                             viewModel.next()
                         }
                     })
+                SpeedChangeView(
+                    changePlaybackSpeed: viewModel.changePlaybackSpeedSubject,
+                    speedValueFormattedPublisher: viewModel.currentSpeedPublisher
+                        .map { currentSpeed in
+                            currentSpeed.description
+                        }
+                        .eraseToAnyPublisher())
                 PlaybackControlView(state: .init(
                     previousAction: { viewModel.previous() },
                     reverseAction: { viewModel.reverse() },
