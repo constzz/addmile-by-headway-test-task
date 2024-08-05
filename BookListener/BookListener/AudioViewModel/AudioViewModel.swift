@@ -5,76 +5,77 @@
 //  Created by Konstantin Bezzemelnyi on 04.08.2024.
 //
 
-import Foundation
 import AVKit
 import Combine
+import Foundation
+
+// MARK: - AudioViewModel
 
 final class AudioViewModel: NSObject, AudioViewModelProtocol {
-        
     var player: AVAudioPlayer = .init()
-    
+
     var currentTimeInSeconds: AnyPublisher<Double, Never> {
         currentTimeInSecondsSubject.eraseToAnyPublisher()
     }
-    
+
     private lazy var currentTimeInSecondsSubject: CurrentValueSubject<Double, Never> = .init(0.0)
-    
+
     var totalDurationInSeconds: Double {
         totalDurationInSecondsSubject.value
     }
-    
+
     var totalDurationInSecondsPublisher: AnyPublisher<Double, Never> {
         totalDurationInSecondsSubject.eraseToAnyPublisher()
     }
-    
+
     private var totalDurationInSecondsSubject: CurrentValueSubject<Double, Never> = .init(0.0)
-    
+
     private(set) lazy var isPlaying: Bool = player.isPlaying
-    
+
     private var currentTimeObserver: NSKeyValueObservation?
-    
+
     var speed: Float {
         get { player.rate }
         set { player.rate = newValue }
     }
-    
+
     var onFinishPlaying: (() -> Void)?
-    
+
     private var timer: Timer?
-    
+
     override init() {
         super.init()
     }
-    
+
     func set(url: URL) throws {
-        self.player = try .init(contentsOf: url)
-        self.player.delegate = self
-        self.player.enableRate = true
-        
+        player = try .init(contentsOf: url)
+        player.delegate = self
+        player.enableRate = true
+
         currentTimeInSecondsSubject.send(0.0)
         totalDurationInSecondsSubject.send(player.duration)
         setupTimer()
     }
-    
+
     func play() {
         player.play()
         isPlaying = true
     }
-    
+
     func pause() {
         player.pause()
         isPlaying = false
     }
-    
+
     func seekTo(_ value: Double) {
         player.currentTime = value
-        self.currentTimeInSecondsSubject.send(value)
+        currentTimeInSecondsSubject.send(value)
     }
-    
+
     func changePlaybackSpeed(_ speed: Float) {
         self.speed = speed
     }
-    
+
     func forward(seconds: Double) {
         let newValue = Double(player.currentTime) + seconds
         if newValue > totalDurationInSecondsSubject.value {
@@ -83,11 +84,10 @@ final class AudioViewModel: NSObject, AudioViewModelProtocol {
             seekTo(Double(player.currentTime) + seconds)
         }
     }
-    
+
     func reverse(seconds: Double) {
         seekTo(Double(player.currentTime) - seconds)
     }
-    
 }
 
 private extension AudioViewModel {
@@ -101,17 +101,17 @@ private extension AudioViewModel {
         currentTimeInSecondsSubject.send(player.currentTime.preciceCeil(to: .hundredths))
         totalDurationInSecondsSubject.send(player.duration.preciceCeil(to: .hundredths))
     }
-
 }
 
+// MARK: AVAudioPlayerDelegate
+
 extension AudioViewModel: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully flag: Bool) {
         guard flag else {
             return
         }
-        self.onFinishPlaying?()
+        onFinishPlaying?()
     }
-    
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-    }
+
+    func audioPlayerDecodeErrorDidOccur(_: AVAudioPlayer, error _: Error?) {}
 }

@@ -5,29 +5,28 @@
 //  Created by Konstantin Bezzemelnyi on 03.08.2024.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct ListenScreenView: View {
-    
     private enum Constants {
         enum Layout {
             static let spacing = CGFloat(20)
         }
     }
-    
+
     private let subj = CurrentValueSubject<Void, Never>(())
     @State private var isAnimating: Bool
     @State private var mode: ListenScreenMode = .listen
     private let viewModel: ListenScreenViewModelProtocol
     private let subtitleSubject = PassthroughSubject<String, Never>()
     private let mainTitleSubject = PassthroughSubject<String, Never>()
-                
+
     init(isAnimating: Bool, viewModel: ListenScreenViewModelProtocol) {
         self.isAnimating = isAnimating
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         VStack {
             switch mode {
@@ -35,7 +34,8 @@ struct ListenScreenView: View {
                 CoverImageView(coverImage: viewModel.bookCover, foregroundColor: .dark)
                 ChapterInfoView(
                     subtitlePublisher: subtitleSubject.eraseToAnyPublisher(),
-                    mainTitlePublisher: mainTitleSubject.eraseToAnyPublisher())
+                    mainTitlePublisher: mainTitleSubject.eraseToAnyPublisher()
+                )
                 SliderView(
                     valuePublisher: viewModel.progressPublisher,
                     leftLabelValuePublisher: viewModel.currentTimeInSecondsString,
@@ -43,7 +43,8 @@ struct ListenScreenView: View {
                     changeSubject: viewModel.sliderChangeSubject,
                     onChangeEnd: { finalSliderChange in
                         viewModel.onChangeEnd(finalSliderChange: finalSliderChange)
-                    })
+                    }
+                )
 
                 SpeedChangeView(
                     changePlaybackSpeed: viewModel.changePlaybackSpeedSubject,
@@ -51,7 +52,8 @@ struct ListenScreenView: View {
                         .map { currentSpeed in
                             currentSpeed.description
                         }
-                        .eraseToAnyPublisher())
+                        .eraseToAnyPublisher()
+                )
                 Spacer(minLength: Constants.Layout.spacing * 2)
                 PlaybackControlView(state: .init(
                     previousAction: { viewModel.previous() },
@@ -59,12 +61,12 @@ struct ListenScreenView: View {
                     playAction: { viewModel.togglePlayPause() },
                     pauseAction: { viewModel.togglePlayPause() },
                     forwardAction: { viewModel.forward() },
-                    nextAction: { viewModel.next() }),
-                                    isPlayActivePublisher: viewModel.isPlaying,
-                                    isPreviousActivePublisher: viewModel.isPreviousActivePublisher,
-                                    isNextActivePublisher: viewModel.isNextActivePublisher
-                )
-                
+                    nextAction: { viewModel.next() }
+                ),
+                isPlayActivePublisher: viewModel.isPlaying,
+                isPreviousActivePublisher: viewModel.isPreviousActivePublisher,
+                isNextActivePublisher: viewModel.isNextActivePublisher)
+
             case .read:
                 Rectangle()
                     .foregroundStyle(.darkBiege)
@@ -82,9 +84,9 @@ struct ListenScreenView: View {
             }
         }
         .onReceive(viewModel.currentChapterPublisher) { chapter in
-            guard let chapter else { return print("Failed to load ")}
-            self.subtitleSubject.send("\(chapter.index + 1) of \(viewModel.chaptersCount)")
-            self.mainTitleSubject.send(chapter.title)
+            guard let chapter else { return print("Failed to load ") }
+            subtitleSubject.send("\(chapter.index + 1) of \(viewModel.chaptersCount)")
+            mainTitleSubject.send(chapter.title)
         }
         .onReceive(viewModel.mode) { mode in
             self.mode = mode

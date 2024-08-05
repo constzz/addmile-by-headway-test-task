@@ -5,19 +5,17 @@
 //  Created by Konstantin Bezzemelnyi on 03.08.2024.
 //
 
-import XCTest
-import SwiftUI
 import SnapshotTesting
-
+import SwiftUI
+import XCTest
 
 extension XCTestCase {
-    
     private var testingUIUserInterfaceStyles: [UIUserInterfaceStyle] {
         [.light, .dark]
     }
-    
-    func assertImageSnapshot<Value: View>(
-        ofView view: Value,
+
+    func assertImageSnapshot(
+        ofView view: some View,
         name: String?,
         config: ViewImageConfig,
         fileID: StaticString = #fileID,
@@ -27,7 +25,7 @@ extension XCTestCase {
         column: UInt = #column
     ) {
         var config = config
-        testingUIUserInterfaceStyles.forEach({ style in
+        testingUIUserInterfaceStyles.forEach { style in
             assertSnapshot(
                 of: view,
                 as: .image(layout: .device(config: config.withUserInterfaceStyle(style))),
@@ -38,7 +36,7 @@ extension XCTestCase {
                 line: line,
                 column: column
             )
-        })
+        }
     }
 }
 
@@ -46,19 +44,19 @@ extension String {
     static var snapshotName300_per_200: String {
         "300_200_pixels"
     }
-    
+
     static var snapshotName400_per_200: String {
         "400_200_pixels"
     }
-    
+
     static var snapshotName200_per_300: String {
         "200_300_pixels"
     }
-    
+
     static var iphone13PRO: String {
         "iphone13PRO"
     }
-    
+
     static var iphoneSE: String {
         "iphoneSE"
     }
@@ -66,19 +64,19 @@ extension String {
 
 extension ViewImageConfig {
     static var config_300_200_pixels: Self {
-        return .init(size: .init(width: 300, height: 200))
+        .init(size: .init(width: 300, height: 200))
     }
-    
+
     static var config_400_200_pixels: Self {
-        return .init(size: .init(width: 400, height: 200))
+        .init(size: .init(width: 400, height: 200))
     }
-    
+
     static var config_200_300_pixels: Self {
-        return .init(size: .init(width: 200, height: 300))
+        .init(size: .init(width: 200, height: 300))
     }
-    
+
     mutating func withUserInterfaceStyle(_ style: UIUserInterfaceStyle) -> Self {
-        self.traits = self.traits.modifyingTraits({ $0.userInterfaceStyle = style})
+        traits = traits.modifyingTraits { $0.userInterfaceStyle = style }
         return self
     }
 }

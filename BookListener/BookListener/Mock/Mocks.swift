@@ -31,7 +31,6 @@ enum Mock {
         chapters: thinkAndGrowRichFileURLs.enumerated().map { index, url in
             .init(index: index, title: index == 0 ? "Introduction" : "Chapter \(index)", url: url)
         },
-        coverURL: thinkAndGrowRichBookCover)
-
+        coverURL: thinkAndGrowRichBookCover
+    )
 }
-
