@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - RoundingPrecision
+
 enum RoundingPrecision {
     case ones
     case tenths
@@ -17,11 +19,11 @@ extension Double {
     func preciceCeil(to precision: RoundingPrecision) -> Double {
         switch precision {
         case .ones:
-            return ceil(self)
+            ceil(self)
         case .tenths:
-            return ceil(self * 10) / 10.0
+            ceil(self * 10) / 10.0
         case .hundredths:
-            return ceil(self * 100) / 100.0
+            ceil(self * 100) / 100.0
         }
     }
 }

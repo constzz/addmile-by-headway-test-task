@@ -23,6 +23,9 @@
 		7F48B4012C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B3FC2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png */; };
 		7F48B4042C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B4022C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_light.png */; };
 		7F48B4052C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B4032C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_dark.png */; };
+		7F48B43E2C6107BC006CCB29 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 7F48B43D2C6107BC006CCB29 /* RswiftLibrary */; };
+		7F48B4402C6107BC006CCB29 /* rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F48B43F2C6107BC006CCB29 /* rswift */; };
+		7F48B4442C6107FE006CCB29 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F48B4422C6107FE006CCB29 /* Localizable.strings */; };
 		7F8780862C5D7CAF00B12A36 /* BookListenerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */; };
 		7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F8780892C5D7CB000B12A36 /* Assets.xcassets */; };
 		7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F87808C2C5D7CB000B12A36 /* Preview Assets.xcassets */; };
@@ -91,6 +94,7 @@
 		7F48B3FC2C60D94D006CCB29 /* test_ReadMode_empty.iphone13PRO_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ReadMode_empty.iphone13PRO_light.png; sourceTree = "<group>"; };
 		7F48B4022C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_light.png; sourceTree = "<group>"; };
 		7F48B4032C60D9E2006CCB29 /* test_playbackControlView.300_200_pixels_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_playbackControlView.300_200_pixels_dark.png; sourceTree = "<group>"; };
+		7F48B4432C6107FE006CCB29 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F8780822C5D7CAF00B12A36 /* BookListener.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookListener.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8780852C5D7CAF00B12A36 /* BookListenerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListenerApp.swift; sourceTree = "<group>"; };
 		7F8780892C5D7CB000B12A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F48B43E2C6107BC006CCB29 /* RswiftLibrary in Frameworks */,
+				7F48B4402C6107BC006CCB29 /* rswift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,14 @@
 			path = ListenScreenSnapshotTests;
 			sourceTree = "<group>";
 		};
+		7F48B4382C61063F006CCB29 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				7F48B4422C6107FE006CCB29 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		7F8780792C5D7CAF00B12A36 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +202,7 @@
 		7F8780842C5D7CAF00B12A36 /* BookListener */ = {
 			isa = PBXGroup;
 			children = (
+				7F48B4382C61063F006CCB29 /* Localization */,
 				7F8781832C5F973600B12A36 /* Book */,
 				7F87817D2C5F96F400B12A36 /* AudioViewModel */,
 				7F8781732C5F859E00B12A36 /* Mock */,
@@ -369,8 +384,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				7F48B4352C6105DA006CCB29 /* PBXTargetDependency */,
 			);
 			name = BookListener;
+			packageProductDependencies = (
+				7F48B43D2C6107BC006CCB29 /* RswiftLibrary */,
+				7F48B43F2C6107BC006CCB29 /* rswift */,
+			);
 			productName = BookListener;
 			productReference = 7F8780822C5D7CAF00B12A36 /* BookListener.app */;
 			productType = "com.apple.product-type.application";
@@ -430,6 +450,7 @@
 			packageReferences = (
 				7F8780D82C5E0BE900B12A36 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				7F48B3DA2C5FAFA7006CCB29 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				7F48B42A2C610518006CCB29 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = 7F8780832C5D7CAF00B12A36 /* Products */;
 			projectDirPath = "";
@@ -448,6 +469,7 @@
 			files = (
 				7F87808D2C5D7CB000B12A36 /* Preview Assets.xcassets in Resources */,
 				7F8781772C5F859E00B12A36 /* 03 Chapter 3.mp3 in Resources */,
+				7F48B4442C6107FE006CCB29 /* Localizable.strings in Resources */,
 				7F48B3EE2C602F25006CCB29 /* think_and_grow_rich_book_cover.jpg in Resources */,
 				7F8781782C5F859E00B12A36 /* 04 Chapter 4.mp3 in Resources */,
 				7F87808A2C5D7CB000B12A36 /* Assets.xcassets in Resources */,
@@ -529,12 +551,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7F48B4352C6105DA006CCB29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7F48B4342C6105DA006CCB29 /* RswiftGenerateInternalResources */;
+		};
 		7F8780C72C5D93A000B12A36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7F8780812C5D7CAF00B12A36 /* BookListener */;
 			targetProxy = 7F8780C62C5D93A000B12A36 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7F48B4422C6107FE006CCB29 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F48B4432C6107FE006CCB29 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7F8780A42C5D7CB100B12A36 /* Debug */ = {
@@ -589,7 +626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -646,7 +683,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -737,6 +774,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7242VTUBZ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -757,6 +795,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7242VTUBZ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.konstantin.bezzemelnyi.BookListenerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -808,6 +847,14 @@
 				minimumVersion = 0.9.11;
 			};
 		};
+		7F48B42A2C610518006CCB29 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
 		7F8780D82C5E0BE900B12A36 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -823,6 +870,20 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7F48B3DA2C5FAFA7006CCB29 /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
+		};
+		7F48B4342C6105DA006CCB29 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		7F48B43D2C6107BC006CCB29 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F48B42A2C610518006CCB29 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		7F48B43F2C6107BC006CCB29 /* rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F48B42A2C610518006CCB29 /* XCRemoteSwiftPackageReference "R" */;
+			productName = rswift;
 		};
 		7F8780D92C5E0BE900B12A36 /* InlineSnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;

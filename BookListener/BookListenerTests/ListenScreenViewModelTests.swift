@@ -5,68 +5,70 @@
 //  Created by Konstantin Bezzemelnyi on 04.08.2024.
 //
 
-import XCTest
-import Combine
 @testable import BookListener
+import Combine
+import XCTest
+
+// MARK: - ListenScreenViewModelTests
 
 final class ListenScreenViewModelTests: XCTestCase {
     private var cancellables = Set<AnyCancellable>()
-        
+
     func test_togglePlayPauseOnce_SetsIsPlayingToTrue() async throws {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 1)
-        
+
         waitForIsPlayingPublishing(sut: sut, expectedValue: true)
     }
-    
+
     func test_togglePlayPauseTwice_SetsIsPlayingToFalse() {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 2)
         waitForIsPlayingPublishing(sut: sut, expectedValue: false)
     }
-    
+
     func test_togglePlayPauseTriple_SetsIsPlayingToTrue() {
         let sut = makeSUT()
         sut.togglePlayPause(amountOfTimes: 3)
         waitForIsPlayingPublishing(sut: sut, expectedValue: true)
     }
-    
+
     func test_initialDurationIsZeroByDefault() {
         let sut = makeSUT()
         sut.currentTimeInSeconds.waitForPublisher(expectedValue: 0.0, cancellables: &cancellables)
     }
-    
+
     func test_reverse_reversesDuration5SecondsBack() {
         let sut = makeSUT()
         sut.seekTo(20.0)
-        
+
         sut.reverse()
-        
+
         sut.currentTimeInSeconds.waitForPublisher(expectedValue: 15.0, cancellables: &cancellables)
     }
-    
+
     func test_forward_forwardsDuration5SecondsBack() {
         let sut = makeSUT()
         sut.seekTo(11.0)
-        
+
         sut.forward()
-        
+
         sut.currentTimeInSeconds.waitForPublisher(expectedValue: 21.0, cancellables: &cancellables)
     }
-    
+
     func test_initialChapterIsFirstFromTheList() {
         let chapters = createRandomChapters()
         let sut = makeSUT(chapters: chapters)
-        
+
         XCTAssertEqual(sut.currentChapter, chapters.first)
     }
-    
+
     func test_initialChapterIsNil_ifListIsEmpty() {
         let sut = makeSUT(chapters: [])
-        
+
         XCTAssertEqual(sut.currentChapter, nil)
     }
-        
+
     func test_previousSetsPreviousChapter() {
         let chapters = createRandomChapters()
         let currentIndex = 2
@@ -79,7 +81,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             afterAction: { sut in sut.previous() }
         )
     }
-    
+
     func test_previousRemainsSameChapter_ifCurrentIsFirst() {
         let chapters = createRandomChapters()
         let currentIndex = 0
@@ -92,7 +94,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             afterAction: { sut in sut.previous() }
         )
     }
-    
+
     func test_nextSetsNextChapter() {
         let chapters = createRandomChapters()
         let currentIndex = 2
@@ -105,7 +107,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             afterAction: { sut in sut.next() }
         )
     }
-    
+
     func test_nextRemainsSameChapter_ifCurrentIsLast() {
         let chapters = createRandomChapters()
         let currentIndex = chapters.count - 1
@@ -118,7 +120,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             afterAction: { sut in sut.next() }
         )
     }
-    
+
     func test_currentChapterIsFirst_ifCurrentIndexisNotIndexOfArray() {
         let chapters = createRandomChapters()
         let currentIndex = 999
@@ -131,7 +133,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             afterAction: { _ in }
         )
     }
-    
+
     private func assertCurrentChapterOfAudioViewModel(
         is expectedChapterToOpen: Chapter?,
         ifCurrentIndexIs index: Int,
@@ -141,13 +143,12 @@ final class ListenScreenViewModelTests: XCTestCase {
         line: UInt = #line
     ) {
         XCTAssertNotNil(expectedChapterToOpen, file: filePath, line: line)
-        
+
         let sut = makeSUT(chapters: chatpers, defaultChapterIndex: index)
         action(sut)
         XCTAssertEqual(sut.currentChapter, expectedChapterToOpen, file: filePath, line: line)
     }
 
-    
     private func makeSUT(
         chapters: [Chapter]? = nil,
         defaultChapterIndex: Int? = nil
@@ -161,7 +162,7 @@ final class ListenScreenViewModelTests: XCTestCase {
             mode: .listen
         )
     }
-    
+
     private func waitForIsPlayingPublishing(
         sut: ListenScreenViewModelProtocol,
         expectedValue: Bool,
@@ -172,13 +173,13 @@ final class ListenScreenViewModelTests: XCTestCase {
             XCTAssertEqual(isPlaying, expectedValue, file: file, line: line)
         }).store(in: &cancellables)
     }
-
 }
 
 // MARK: Test helpers
+
 extension ListenScreenViewModelProtocol {
     func togglePlayPause(amountOfTimes: Int) {
-        for _ in 1...amountOfTimes {
+        for _ in 1 ... amountOfTimes {
             togglePlayPause()
         }
     }

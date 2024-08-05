@@ -5,29 +5,30 @@
 //  Created by Konstantin Bezzemelnyi on 03.08.2024.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
+
+// MARK: - SliderView
 
 public struct SliderView: View {
-        
     @State private var offset: CGFloat = 0
     @State private var isDragging: Bool = false
 
     let valuePublisher: AnyPublisher<Double, Never>
     @State private var value: Double = 0.0
-    
+
     let leftLabelValuePublisher: AnyPublisher<String, Never>
     @State private var leftLabelValue: String = "0.0"
-    
+
     let rightLabelValuePublisher: AnyPublisher<String, Never>
     @State private var rightLabelValue: String = "0.0"
-    
+
     private let title: String?
     private let systemImage: String
     let sliderWidth: CGFloat
     private let sliderHeight: CGFloat
     private let sliderColor: Color
-    
+
     private let changeSubject: any Subject<Double, Never>
     private let onChangeEnd: ((Double) -> Void)?
 
@@ -96,15 +97,15 @@ public struct SliderView: View {
             Text(rightLabelValue)
                 .fixedSize(horizontal: true, vertical: false)
         }.onAppear()
-        .onReceive(valuePublisher) { value in
-            self.value = value
-        }
-        .onReceive(leftLabelValuePublisher) { value in
-            leftLabelValue = value
-        }
-        .onReceive(rightLabelValuePublisher) { value in
-            rightLabelValue = value
-        }
+            .onReceive(valuePublisher) { value in
+                self.value = value
+            }
+            .onReceive(leftLabelValuePublisher) { value in
+                leftLabelValue = value
+            }
+            .onReceive(rightLabelValuePublisher) { value in
+                rightLabelValue = value
+            }
     }
 
     private func updateValue() {
@@ -117,6 +118,8 @@ public struct SliderView: View {
         offset = max(0, min(newOffset, sliderWidth - sliderHeight))
     }
 }
+
+// MARK: - SliderViewBase
 
 private struct SliderViewBase: View {
     @Binding var offset: CGFloat
@@ -173,7 +176,7 @@ private struct SliderViewBase: View {
             .fill(sliderColor)
             .frame(width: sliderFillWidth, height: sliderHeight)
     }
-    
+
     private var sliderThumb: some View {
         Circle()
             .frame(width: sliderHeight * 2.5, height: sliderHeight * 2.5)
@@ -192,4 +195,3 @@ private struct SliderViewBase: View {
         offset = max(0, min(adjustedLocation, sliderWidth - sliderHeight))
     }
 }
-

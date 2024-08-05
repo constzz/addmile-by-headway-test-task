@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  BookListener
+
+  Created by Konstantin Bezzemelnyi on 05.08.2024.
+  
+*/
+"speed" = "Speed x%@";
+"error" = "Error";
+"unknownError" = "Unknown Error";
+"ok" = "OK";
+"unableToLoadChapter" = "Unable to load chapter details";
+"chapterSubtitle" = "%d of %d";

@@ -10,13 +10,13 @@ import Foundation
 // No localizations here, data is expected to be mock only
 
 enum Mock {
-    static let thinkAndGrowRich0File: URL? = Bundle.main.url(forResource: "00 Introduction", withExtension: "mp3")
-    static let thinkAndGrowRich1File: URL? = Bundle.main.url(forResource: "01 Chapter 1", withExtension: "mp3")
-    static let thinkAndGrowRich2File: URL? = Bundle.main.url(forResource: "02 Chapter 2", withExtension: "mp3")
-    static let thinkAndGrowRich3File: URL? = Bundle.main.url(forResource: "03 Chapter 3", withExtension: "mp3")
-    static let thinkAndGrowRich4File: URL? = Bundle.main.url(forResource: "04 Chapter 4", withExtension: "mp3")
-    static let thinkAndGrowRich5File: URL? = Bundle.main.url(forResource: "05 Chapter 5", withExtension: "mp3")
-    static let thinkAndGrowRichBookCover: URL? = Bundle.main.url(forResource: "think_and_grow_rich_book_cover", withExtension: "jpg")
+    static let thinkAndGrowRich0File: URL? = R.file.introductionMp3()
+    static let thinkAndGrowRich1File: URL? = R.file.chapter1Mp3()
+    static let thinkAndGrowRich2File: URL? = R.file.chapter2Mp3()
+    static let thinkAndGrowRich3File: URL? = R.file.chapter3Mp3()
+    static let thinkAndGrowRich4File: URL? = R.file.chapter4Mp3()
+    static let thinkAndGrowRich5File: URL? = R.file.chapter5Mp3()
+    static let thinkAndGrowRichBookCover: URL? = R.file.think_and_grow_rich_book_coverJpg()
 
     static let thinkAndGrowRichFileURLs: [URL?] = [
         thinkAndGrowRich0File,
@@ -31,7 +31,6 @@ enum Mock {
         chapters: thinkAndGrowRichFileURLs.enumerated().map { index, url in
             .init(index: index, title: index == 0 ? "Introduction" : "Chapter \(index)", url: url)
         },
-        coverURL: thinkAndGrowRichBookCover)
-
+        coverURL: thinkAndGrowRichBookCover
+    )
 }
-

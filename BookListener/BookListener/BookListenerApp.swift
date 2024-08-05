@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct BookListenerApp: App {
-    
     var body: some Scene {
         WindowGroup {
             VStack {
@@ -17,8 +16,10 @@ struct BookListenerApp: App {
                     isAnimating: true,
                     viewModel: ListenScreenViewModel(
                         book: Mock.mockedThinkAndGrowRichBook,
-                        audioViewModel: AudioViewModel(), 
-                        mode: .listen))
+                        audioViewModel: AudioViewModel(),
+                        mode: .listen
+                    )
+                )
             }
         }
     }

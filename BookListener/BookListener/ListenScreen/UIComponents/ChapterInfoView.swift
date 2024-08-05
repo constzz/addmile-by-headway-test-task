@@ -5,16 +5,15 @@
 //  Created by Konstantin Bezzemelnyi on 03.08.2024.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct ChapterInfoView: View {
-    
     @State private var subtitle: String = ""
     @State private var mainTitle: String = ""
     private let subtitlePublisher: AnyPublisher<String, Never>
     private let mainTitlePublisher: AnyPublisher<String, Never>
-    
+
     init(
         subtitlePublisher: AnyPublisher<String, Never>,
         mainTitlePublisher: AnyPublisher<String, Never>
@@ -22,7 +21,7 @@ struct ChapterInfoView: View {
         self.subtitlePublisher = subtitlePublisher
         self.mainTitlePublisher = mainTitlePublisher
     }
-    
+
     var body: some View {
         VStack {
             Text(subtitle)
@@ -39,10 +38,10 @@ struct ChapterInfoView: View {
         }
         .padding(.horizontal, 40)
         .onReceive(subtitlePublisher) { title in
-            self.subtitle = title
+            subtitle = title
         }
         .onReceive(mainTitlePublisher) { title in
-            self.mainTitle = title
+            mainTitle = title
         }
     }
 }
