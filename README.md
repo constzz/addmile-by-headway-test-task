@@ -19,7 +19,7 @@ Localization to be flexible using new languages in future. Refactoring some code
 - move mocks out of main target code to tests. Use real data and integrate app with data source.
 - test viewModel functions that are not tested now
 - separate snapshot tests of UIComponenets to separate test and write more test for each with different states
-- run SwiftFormat, SwfitLint ot keep code clean, readable and following same rules
+- add SwiftFormat, SwfitLint ot keep code clean, readable and following same rules
 
 ## App screenshots (latest from snapshot tests)
 ### Listen Screen
